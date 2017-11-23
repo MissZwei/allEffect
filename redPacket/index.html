@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/paystatus.css" />
+		<link rel="stylesheet" href="css/drawgame.css" />
+	</head>
+	<body>
+		<div id="fade" class="black_overlay"> </div>
+		<div class="drawGame">
+			<div class="drawTheme"></div>
+			<div class="drawPacket">
+				<div class="open"></div>
+				<div class="openBtn"></div>
+				<div class="flutter">
+					
+				</div>
+			</div>
+		</div>
+		
+		<div id="draw" class="draw">
+			<span class="draw-top draw-top1"></span>
+			<div class="draw-centen">
+				<p>恭喜您，获得了</p>
+				<span>￥500</span>
+				<b>红包<span>500</span>元</b>
+			</div>
+			<a href=""><button>立即领取</button></a>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script>
+			$(function(){
+				setTimeout(function(){
+					$(".black_overlay,.drawGame").fadeIn();
+				},3000);
+				$(".openBtn").on('click',function(){
+					$(".drawGame").fadeOut();
+								$(".draw").fadeIn();
+					$.ajax({
+						type:"post",
+						data:{},
+						url:"",
+						success:function(data){
+							if(data){
+								$(".drawGame").fadeOut();
+								$(".draw").fadeIn();
+							}
+						},
+						error:function(data){
+							console.log("网络不稳定！");
+						}
+					});
+					
+				});
+			})
+		</script>
+	</body>
+</html>

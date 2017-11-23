@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>抽奖</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="css/paystatus.css"/>
+		<link rel="stylesheet" type="text/css" href="css/draw.css"/>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	</head>
+	<body>
+	
+		<button class="box">click</button>
+		<!--点击出弹框-->
+	<div id="fade" class="black_overlay"> </div>
+	<div id="draw" class="draw">
+		<span class="draw-top"></span>
+		<div class="draw-centen">
+			<p>恭喜您，获得了</p>
+			<span>￥500</span>
+			<b>红包<span>500</span>元</b>
+		</div>
+		<a href="#javascript:;">
+				<button>立即领取</button>
+		</a>
+		
+	</div>
+		
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".box").click(function(){
+					var draw = document.getElementById("draw").style.display='block';
+					var fade = document.getElementById("fade").style.display='block';
+				})
+				
+				
+				
+			})
+			
+		</script>
+		
+		
+	</body>
+</html>

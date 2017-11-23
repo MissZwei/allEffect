@@ -1,0 +1,103 @@
+.black_overlay {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+.draw {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 75rem;
+  width: 50rem;
+  background: url(../img/beijing.png) no-repeat;
+  background-size: 100%;
+  z-index: 1002;
+  overflow: auto;
+  display: none;
+}
+.draw-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 12.5rem auto;
+  height: 11.25rem;
+  width: 18.4375rem;
+  z-index: 1003;
+  background: url(../img/draw1.png) no-repeat;
+  background-size: 100%;
+}
+.draw-top2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 12.5rem auto;
+  height: 11.25rem;
+  width: 18.4375rem;
+  z-index: 1003;
+  background: url(../img/draw2.png) no-repeat;
+  background-size: 100%;
+}
+.draw-centen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 31.25rem;
+  width: 37.5rem;
+  background: #fff4de;
+}
+.draw-centen > p:nth-child(1) {
+  font-size: 2.4375rem;
+  color: #f9285e;
+  margin-top: 6.25rem;
+  text-align: center;
+}
+.draw-centen > span:nth-child(2) {
+  display: block;
+  font-size: 5.0625rem;
+  color: #f9285e;
+  margin-top: 3.125rem;
+  text-align: center;
+}
+.draw-centen > b:nth-child(3) {
+  display: block;
+  font-size: 2.0625rem;
+  color: #f9285e;
+  margin-top: 6.25rem;
+  text-align: center;
+  font-weight: normal;
+}
+.draw > a {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 6.25rem;
+  width: 37.5rem;
+  margin: 59.375rem auto 0;
+}
+.draw > a > button {
+  height: 6.25rem;
+  width: 37.5rem;
+  background: #febc1d;
+  border-radius: 12.5rem;
+  font-size: 2.4375rem;
+  color: #f9285e;
+}

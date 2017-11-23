@@ -1,0 +1,370 @@
+
+.drawGame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -278/6/2rem;
+    margin-top: -414/6/2rem;
+    width: 278/6rem;
+    height: 414/6rem;
+    background: url(../img/draw_bg.jpg)no-repeat;
+    background-size: 100% 100%;
+    z-index: 2;
+    display: none;
+}
+.drawTheme {
+    margin: 54/6rem auto 35/6rem;
+    width: 234/6rem;
+    height: 105/6rem;
+    background: url(../img/draw_theme.png)no-repeat;
+    background-size: 100% 100%;
+}
+.drawPacket {
+    position: relative;
+    margin: 0 auto;
+    width: 201/6rem;
+    height: 193/6rem;
+    background: url(../img/draw_packet.png)no-repeat;
+    background-size: 100% 100%;
+}
+//抽奖“开”
+.open {
+    position: absolute;
+    width: 84/6rem;
+    height: 84/6rem;
+    top: 88/6rem;
+    left: 50%;
+    margin-left: -84/6/2rem;
+    box-shadow: 0 0 20px #ffcc00;
+    background: url(../img/draw_cir.png)no-repeat center center;
+    background-size: 75/6rem 75/6rem;
+    border-radius: 50%;
+    -webkit-animation: draw 4s ease-in-out infinite;
+    -moz-animation: draw 4s ease-in-out infinite;
+    animation: draw 4s ease-in-out infinite;
+}
+@-webkit-keyframes draw {
+    from {
+        box-shadow: 0 0 20px #ffcc00;
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    60% {
+        box-shadow: 0 0 180px #ffcc00;
+        transform: rotate(216deg);
+        -ms-transform: rotate(216deg);
+        -webkit-transform: rotate(216deg);
+        -o-transform: rotate(216deg);
+        -moz-transform: rotate(216deg);
+    }
+    to {
+        box-shadow: 0 0 20px #ffcc00;
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+    }
+}
+@-moz-keyframes draw {
+    rom {
+        box-shadow: 0 0 20px #ffcc00;
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    60% {
+        box-shadow: 0 0 180px #ffcc00;
+        transform: rotate(216deg);
+        -ms-transform: rotate(216deg);
+        -webkit-transform: rotate(216deg);
+        -o-transform: rotate(216deg);
+        -moz-transform: rotate(216deg);
+    }
+    to {
+        box-shadow: 0 0 20px #ffcc00;
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+    }
+}
+@keyframes draw {
+    rom {
+        box-shadow: 0 0 20px #ffcc00;
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    60% {
+        box-shadow: 0 0 180px #ffcc00;
+        transform: rotate(216deg);
+        -ms-transform: rotate(216deg);
+        -webkit-transform: rotate(216deg);
+        -o-transform: rotate(216deg);
+        -moz-transform: rotate(216deg);
+    }
+    to {
+        box-shadow: 0 0 20px #ffcc00;
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+    }
+}
+
+.openBtn {
+    position: absolute;
+    top: 115/6rem;
+    left: 50%;
+    margin-left: -24/6/2rem;
+    width: 24/6rem;
+    height: 28/6rem;
+    background: url(../img/draw_open.png)no-repeat;
+    background-size: 100% 100%;
+}
+
+.flutter {
+    position: absolute;
+    top: 46/6rem;
+    left: 147/6rem;
+    width: 92/6rem;
+    height: 78/6rem;
+    background: url(../img/draw_flutter.png)no-repeat;
+    background-size: 100% 100%;
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -webkit-animation: drawflutter 2s linear infinite;
+    -moz-animation: drawflutter 2s linear infinite;
+    animation: drawflutter 2s linear infinite;
+}
+@-webkit-keyframes drawflutter {
+    0% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+
+    }
+    25% {
+        transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        -webkit-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    75% {
+        transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+}
+@-moz-keyframes drawflutter {
+    0% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+
+    }
+    25% {
+        transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        -webkit-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    75% {
+        transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+}
+@keyframes drawflutter {
+    0% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+
+    }
+    25% {
+        transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        -webkit-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    75% {
+        transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+}
+
+//点击开之后的弹框
+.black_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    -moz-opacity: 0.8;
+    opacity: 0.80;
+    filter: alpha(opacity=80);
+    display: none;
+}
+.draw {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 1200/16rem;
+    width: 800/16rem;
+    background: url("../img/beijing.png") no-repeat;
+    background-size: 100%;
+    z-index: 2;
+    overflow: auto;
+    display: none;
+}
+.draw-top {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 90/12rem auto;
+    height: 171/10rem;
+    width: 279/10rem;
+    
+    z-index:2;
+}
+.draw-top1{
+    background: url(../img/draw1.png)no-repeat; 
+    background-size: 100% 100%;
+}
+.draw-top2 {
+    background: url(../img/draw2.png)no-repeat;
+    background-size: 100% 100%;
+}
+.draw-centen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 500/16rem;
+    width: 600/16rem;
+    background: #fff4de;
+    z-index: 1;
+}
+.draw-centen > p:nth-child(1) {
+    //  background: yellowgreen;
+    font-size: 39/16rem;
+    color: #f9285e;
+    margin-top: 100/16rem;
+    text-align: center;
+}
+.draw-centen > span:nth-child(2) {
+    display: block;
+    font-size: 81/16rem;
+    color: #f9285e;
+    margin-top: 50/16rem;
+    text-align: center;
+
+}
+.draw-centen > b:nth-child(3) {
+    display: block;
+    font-size: 33/16rem;
+    color: #f9285e;
+    margin-top: 100/16rem;
+    text-align: center;
+    font-weight: normal;
+
+}
+.draw > a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100/16rem;
+    width: 600/16rem;
+    margin: 950/16rem auto 0;  
+}
+
+.draw > a > button {
+    height: 100/16rem;
+    width: 600/16rem;
+    background: #febc1d;
+    border-radius: 200/16rem;
+    font-size: 39/16rem;
+    color: #f9285e;
+    outline: none;
+}
