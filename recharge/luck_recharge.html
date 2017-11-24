@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>手机验证</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/yzm.css" />
+		<script type="text/javascript" src="js/public.js"></script>
+		
+	</head>
+	
+	<body>
+		<div class="footer">
+			<input type="number" name="mobile" id="" placeholder=" 请输入您的手机号" />
+			<input type="number" name="code" id="" placeholder=" 请输入您的验证码" />
+			<input type="button" name="getbtn"  value="点击发送验证码" />
+			<input type="button" class="send" value="" style="display: none;"/>
+			<p>为保证您的账号安全，需要您的认证</p>
+			<button class="rechargebtn">立即充值</button>
+		</div>
+		<div class="alertTip"></div>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript">	
+			$(function(){
+				var getBtn = $("input[name='getbtn']");
+				var code = $("input[name='code']");
+				var mobile = $("input[name='mobile']");
+				var tip = $('.alertTip');
+				var timeNum = 10;
+				function dtime(){
+					timeNum--;
+					$(".send").show();
+					getBtn.hide();
+					$(".send").val(timeNum + '秒可重新获取');
+					if(!timeNum) {
+						clearTimeout(t);
+						timeNum = 10;
+						getBtn.bind('click');
+						setTimeout(function(){
+							$(".send").hide();
+							getBtn.show();
+						}, 1000);
+						
+					} else {
+						t = setTimeout(dtime, 1000);
+					}
+				}
+				function checkMobile(tel) {
+					if(/1[2-9]+\d{9}/.test(tel)) {
+						return true;
+					}
+					return false;
+				}
+				getBtn.on('click',function(){
+					var tel = Number(mobile.val());
+					if(!checkMobile(tel)){
+						tip.html('手机号输入错误！').fadeIn();
+						setTimeout(function(){
+							tip.fadeOut();
+						},2000);
+					}else{
+						dtime();
+						$.ajax({
+							type:"post",
+							data:{mobile:tel},
+							url:"",
+							success:function(data){
+								var data = eval(data);
+								if(data.flag == '1'){
+									tip.html(data.msg).fadeIn();
+									setTimeout(function(){
+										tip.fadeOut();
+									},2000);
+								}else{
+									tip.html(data.msg).fadeIn();
+									setTimeout(function(){
+										tip.fadeOut();
+									},2000);
+								}
+							},
+							error:function(err){
+								console.log(err);
+							}
+						});
+					}
+				});
+				
+				$(".rechargebtn").on('click', function() {
+					var tel =  Number(mobile.val());
+					var code = codenum.val();
+					if(code==''){
+						tip.html('请输入验证码').fadeIn();
+						setTimeout(function(){
+							tip.fadeOut();
+						},2000);
+					}else if(tel!=''&&code!=''){
+						$.ajax({
+							type:"post",
+							data:{mobile:tel,code:code},
+							url:"",
+							success:function(data){
+								var data = eval(data);
+								if(data.flag == '1'){
+									window.location.href="";
+								}else{
+									tip.html(data.msg).fadeIn();
+									setTimeout(function(){
+										tip.fadeOut();
+									},2000);
+								}
+							}
+						});
+					}
+					
+				});
+			})
+		</script>
+		
+
+	</body>
+
+</html>
