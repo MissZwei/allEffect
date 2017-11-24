@@ -26,7 +26,7 @@
 				var code = $("input[name='code']");
 				var mobile = $("input[name='mobile']");
 				var tip = $('.alertTip');
-				var timeNum = 10;
+				var timeNum = 60;
 				function dtime(){
 					timeNum--;
 					$(".send").show();
@@ -34,7 +34,7 @@
 					$(".send").val(timeNum + '秒可重新获取');
 					if(!timeNum) {
 						clearTimeout(t);
-						timeNum = 10;
+						timeNum = 60;
 						getBtn.bind('click');
 						setTimeout(function(){
 							$(".send").hide();
@@ -87,8 +87,8 @@
 				
 				$(".rechargebtn").on('click', function() {
 					var tel =  Number(mobile.val());
-					var code = codenum.val();
-					if(code==''){
+					var codenum = code.val();
+					if(codenum==''){
 						tip.html('请输入验证码').fadeIn();
 						setTimeout(function(){
 							tip.fadeOut();
@@ -96,7 +96,7 @@
 					}else if(tel!=''&&code!=''){
 						$.ajax({
 							type:"post",
-							data:{mobile:tel,code:code},
+							data:{mobile:tel,code:codenum},
 							url:"",
 							success:function(data){
 								var data = eval(data);

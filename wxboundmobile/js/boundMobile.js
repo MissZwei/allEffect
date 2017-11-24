@@ -38,28 +38,28 @@ $(function() {
 			},2000);
 		}else{
 			dtime();
-//			$.ajax({
-//				type:"post",
-//				data:{mobile:tel},
-//				url:"",
-//				success:function(data){
-//					var data = eval(data);
-//					if(data.flag == '1'){
-//						tip.html(data.msg).fadeIn();
-//						setTimeout(function(){
-//							tip.fadeOut();
-//						},2000);
-//					}else{
-//						tip.html(data.msg).fadeIn();
-//						setTimeout(function(){
-//							tip.fadeOut();
-//						},2000);
-//					}
-//				},
-//				error:function(err){
-//					console.log(err);
-//				}
-//			});
+			$.ajax({
+				type:"post",
+				data:{mobile:tel},
+				url:"",
+				success:function(data){
+					var data = eval(data);
+					if(data.flag == '1'){
+						tip.html(data.msg).fadeIn();
+						setTimeout(function(){
+							tip.fadeOut();
+						},2000);
+					}else{
+						tip.html(data.msg).fadeIn();
+						setTimeout(function(){
+							tip.fadeOut();
+						},2000);
+					}
+				},
+				error:function(err){
+					console.log(err);
+				}
+			});
 		}
 	});
 	$(".confirm").on('click', function() {
