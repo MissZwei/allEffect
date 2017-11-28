@@ -1,0 +1,51 @@
+[
+	{
+		"img": "http://img.bxgogo.com/images/goods/goods_img/20171123/201711230848169861.jpeg?x-oss-process=image/quality,q_25/format,jpg",
+		"name": "零食",
+		"sale": 15,
+		"price": 10,
+		"num": 1
+	}, {
+		"img": "http://img.bxgogo.com/images/goods/goods_img/20171123/201711230848169861.jpeg?x-oss-process=image/quality,q_25/format,jpg",
+		"name": "零食",
+		"sale": 15,
+		"price": 10,
+		"num": 2
+	}, {
+		"img": "http://img.bxgogo.com/images/goods/goods_img/20171123/201711230848169861.jpeg?x-oss-process=image/quality,q_25/format,jpg",
+		"name": "零食",
+		"sale": 15,
+		"price": 10,
+		"num": 3
+	}, {
+		"img": "http://img.bxgogo.com/images/goods/goods_img/20171123/201711230848169861.jpeg?x-oss-process=image/quality,q_25/format,jpg",
+		"name": "零食",
+		"sale": 15,
+		"price": 10,
+		"num": 4
+	}, {
+		"img": "http://img.bxgogo.com/images/goods/goods_img/20171123/201711230848169861.jpeg?x-oss-process=image/quality,q_25/format,jpg",
+		"name": "零食",
+		"sale": 15,
+		"price": 10,
+		"num": 5
+	}, {
+		"img": "http://img.bxgogo.com/images/goods/goods_img/20171123/201711230848169861.jpeg?x-oss-process=image/quality,q_25/format,jpg",
+		"name": "零食",
+		"sale": 15,
+		"price": 10,
+		"num": 6
+	}, {
+		"img": "http://img.bxgogo.com/images/goods/goods_img/20171123/201711230848169861.jpeg?x-oss-process=image/quality,q_25/format,jpg",
+		"name": "零食",
+		"sale": 15,
+		"price": 10,
+		"num": 7
+	}, {
+		"img": "http://img.bxgogo.com/images/goods/goods_img/20171123/201711230848169861.jpeg?x-oss-process=image/quality,q_25/format,jpg",
+		"name": "零食",
+		"sale": 15,
+		"price": 10,
+		"num": 8
+	}
+]

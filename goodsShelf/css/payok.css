@@ -1,0 +1,46 @@
+body {
+  font-family: "微软雅黑";
+}
+.bxg-content {
+  position: relative;
+  margin-top: 1.11111111rem;
+}
+.bxg-pay-ok,
+.bxg-pay-error {
+  margin: 2.75rem auto 0.80555556rem;
+  width: 5.88888889rem;
+  height: 4.55555556rem;
+}
+.bxg-pay-ok {
+  background: url(../images/payok_bg.png) no-repeat;
+  background-size: 5.88888889rem 4.55555556rem;
+}
+.bxg-pay-error {
+  background: url(../images/payerror_bg.png) no-repeat;
+  background-size: 5.88888889rem 4.55555556rem;
+}
+.bxg-tip {
+  font-size: 0.55555556rem;
+  text-align: center;
+  color: #333;
+}
+.bxg-btn {
+  margin: 4.16666667rem auto 0;
+  width: 9.16666667rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  text-align: center;
+  background: #12b7f5;
+  border-radius: 0.11111111rem;
+}
+.bxg-btn a {
+  display: block;
+  font-size: 0.55555556rem;
+  color: #fff;
+}
+.bxg-repay {
+  margin: 1.84722222rem auto 0;
+}
+.bxg-index {
+  margin: 0.94444444rem auto;
+}

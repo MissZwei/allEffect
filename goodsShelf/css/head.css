@@ -1,0 +1,40 @@
+.bxg-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1.11111111rem;
+  line-height: 1.13888889rem;
+  background: #12b7f5;
+  text-align: center;
+  color: #fff;
+  font-size: 0.55555556rem;
+  z-index: 2;
+}
+.bxg-head-icon {
+  background: url(../images/head_icon.png) no-repeat;
+  background-size: 2.15277778rem 0.73611111rem;
+}
+.bxg-back,
+.bxg-list,
+.bxg-search {
+  position: absolute;
+  top: 0.1875rem;
+  height: 0.73611111rem;
+  display: block;
+}
+.bxg-back {
+  left: 0.41666667rem;
+  width: 0.38888889rem;
+  background-position: 0 0;
+}
+.bxg-list {
+  right: 0.41666667rem;
+  width: 0.20833333rem;
+  background-position: -0.5rem 0;
+}
+.bxg-search {
+  right: 1.38888889rem;
+  width: 0.625rem;
+  background-position: -0.80555556rem 0;
+}
