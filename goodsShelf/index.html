@@ -32,7 +32,7 @@
 					<ul>
 						<li v-for="(bar,index) in bars">
 							<div class="bxg-title">{{bar.class}}</div>
-							<div class="goods-list" v-for="goods in bar.list">
+							<div class="goods-list"  v-for="(goods,index) in bar.list">
 								<div class="bxg-item bxg-clear">
 									<div class="bxg-goods-img">
 										<img v-bind:src='goods.img' alt="" />
@@ -43,18 +43,23 @@
 										<span><small>￥</small>{{goods.price}}</span>
 									</div>
 								</div>
+								
 								<div class="bxg-goods-num">
-									<strong class="bxg-minus" v-on:click="minNum(index)">-</strong>
-									<span class="bxg-number">{{goods.num}}</span>
-									<strong class="bxg-add" v-on:click="addNum(item)">+</strong>
+									<strong class="bxg-minus" v-if="goods.num == 0":class="{isHide:true}">-</strong>
+									<strong v-else class="bxg-minus" v-on:click="minNum(goods,index)" class="{isHide:false}" >-</strong>
+									<span class="bxg-number" v-if="goods.num == 0":class="{isHide:true}">{{goods.num}}</span>
+									<span v-else class="{isHide:false}">{{goods.num}}</span>
+									<strong class="bxg-add" v-on:click="addNum(goods)">+</strong>
 								</div>
-							</div>
+							</div> 
 						</li>
 					</ul>
 				</div>
 			</div>
 			
 			<div class="bxg-footer" id="bxg-footer">
+				<div class="goodsNum" v-if="num == 0":class="{isHide:true}">{{num}}</div>
+				<div class="goodsNum" v-else>{{num}}</div>
 				<ul>
 					<li v-for="list in lists">
 						<a v-bind:href = 'list.href' title="">
@@ -68,10 +73,10 @@
 		</div>
 		<script type="text/javascript">
 			$(function(){
-				
 				var cartList = new Vue({
 					el:'#goods-list',
 					data: {
+						num:0,
 						barisActive:false,
 						bars:[],
 						lists:[]
@@ -81,17 +86,27 @@
 						this.getfooter();
 					},
 					methods: {
+						
 						getBars:function(){
+							var sellerid = this.getRequest();
 							var that = this;
 							that.$http({           //调用接口
 		                        method:'GET',
+		                        params:{a:1},
 		                        url:"json/bars.json"  //this指data
 		                    }).then(function(res){  //接口返回数据
 		                        this.bars=res.data;
-		                        
 		                    },function(error){
 		                    	
 		                    })
+						},
+						getRequest:function(){
+							var url = location.search; 
+						   	if (url.indexOf("?") != -1) {
+						      	var str = url.substr(1);
+						      	strs = str.split("=")[1];
+						      	return strs;
+						   	}
 						},
 						getfooter:function(){
 							var that = this;
@@ -99,7 +114,8 @@
 		                        method:'GET',
 		                        url:"json/footer.json"  //this指data
 		                    }).then(function(res){  //接口返回数据
-		                        this.lists=res.data;                        
+		                        this.lists=res.data;  
+		                        
 		                    },function(error){
 		                    	
 		                    })
@@ -111,25 +127,24 @@
 					  		});
 					  		return sum;
 					  	},
-					  	addNum:function(item){
-					  		
-					  		item.num++;
+					  	addNum:function(goods){
+					  		this.num++;
+					  		goods.num++;
 					  	},
-					  	minNum:function(index){
-					  		this.items[index].num--;
-					  		if(this.items[index].num == 0){
-					  			this.items.splice(index,1);  
-					  		}
+					  	minNum:function(goods,index){
+					  		this.num--;
+					  		var tar = event.target;
+					  		var parentIndex = $(tar).parents('li').index();
+					  		this.bars[parentIndex].list[index].num--;
 					  	},
 					  	listScroll:function(index){
 					  		var h = $(".bxg-goods-list ul li").eq(index).offset().top-$(".bxg-header").height();
-							$("body").animate({
-								'scrollTop':h
-							},600);
-							console.log(h);
+							$("body").scrollTop(h);
+							$(".bxg-goods-list ul li").eq(index).siblings('li').removeClass('barActive');
+							
+
 					  	}
-					  
-					  	
+
 					}
 				});
 				
@@ -139,10 +154,20 @@
 					$('.bxg-goods-list ul li').each(function() {
 						var target = parseInt($(this).offset().top - $(window).scrollTop() - 150);
 						var i = $(this).index();
+						var wh = $(window).innerHeight();
+						var top = $('.bxg-goods-bar ul li').eq(i).html();
 						if(target <= 0) {
 							$('.bxg-goods-bar ul li').removeClass('barActive');
 							$('.bxg-goods-bar ul li').eq(i).addClass('barActive');
+
+//							console.log(i+'------'+h);
+//							if(h > wh-100){
+//								$('.bxg-goods-bar').scrollTop(-(h-wh-100));
+//							}
+						}else{
+							return false;
 						}
+						
 					});
 				});
 			});
