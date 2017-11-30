@@ -86,7 +86,6 @@
 						this.getfooter();
 					},
 					methods: {
-						
 						getBars:function(){
 							var sellerid = this.getRequest();
 							var that = this;
@@ -114,7 +113,9 @@
 		                        method:'GET',
 		                        url:"json/footer.json"  //this指data
 		                    }).then(function(res){  //接口返回数据
-		                        this.lists=res.data;  
+		                    	var sellerid = this.getRequest();
+		                        this.lists=res.data;
+		                        this.lists[3].href=this.lists[3].href+sellerid;
 		                        
 		                    },function(error){
 		                    	

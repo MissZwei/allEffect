@@ -37,20 +37,20 @@
 				<div class="bxg-Choosepay-list bxg-paytype">
 					<ul>
 
-						<li class="bxg-clear">
+						<li class="bxg-clear" onclick="choosePay(this);">
 							<div class="bxg-pay-icon"></div>
 							<div>微信支付</div>
-							<div class="bxg-pay-icon isActive" data-type="1" onclick="choosePay(this);"></div>
+							<div class="bxg-pay-icon isActive" data-type="1"></div>
 						</li>
-						<li class="bxg-clear">
+						<li class="bxg-clear" onclick="choosePay(this);">
 							<div class="bxg-pay-icon"></div>
 							<div>支付宝支付</div>
-							<div class="bxg-pay-icon" data-type="2" onclick="choosePay(this);"></div>
+							<div class="bxg-pay-icon" data-type="2"></div>
 						</li>
-						<li class="bxg-clear">
+						<li class="bxg-clear" onclick="choosePay(this);">
 							<div class="bxg-pay-icon"></div>
 							<div>账户资金付款</div>
-							<div class="bxg-pay-icon" data-type="3" onclick="choosePay(this);"></div>
+							<div class="bxg-pay-icon" data-type="3"></div>
 						</li>
 
 					</ul>
@@ -126,10 +126,8 @@
 			<script type="text/javascript">
 				//支付方式选择
 				function choosePay(_this){
-					$(_this).bind('click touchstart',function(){
-						$(this).addClass('isActive');
-						$(this).parent().siblings('li').find('div:last-child').removeClass('isActive');
-					});
+					$(_this).find("div:last-child").addClass('isActive');
+					$(_this).siblings('li').find('div:last-child').removeClass('isActive');
 				}
 				$(function() {
 					//点击立即支付
@@ -165,6 +163,7 @@
 							});
 						}
 					});
+//					$(".ftc_wzsf").show();
 					//关闭键盘
 					function keyboard(){
 						$(".ftc_wzsf").show();

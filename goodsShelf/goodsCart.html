@@ -1,144 +1,168 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>购物车</title>
-    <link rel="stylesheet" href="public/css/reset.css" />
-    <link rel="stylesheet" href="css/head.css" />
-    <link rel="stylesheet" href="css/goodsShell.css" />
 
-    <script type="text/javascript" src="public/js/jquery.min.js" ></script>
-    <script type="text/javascript" src="public/js/vue.min.js" ></script>
-	<script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js" type="text/javascript" charset="utf-8"></script>    
-    <script type="text/javascript" src="public/js/public.js" ></script>
-    
-</head>
-<body>
-	<!--头部-->
-	<header class="bxg-header">
-		<a class="bxg-head-icon bxg-back" href="javascript:history.go(-1);"></a>
-		购物车
-	</header>
-	<div class="bxg-content" id="goods-list">
-		<div class="bxg-gooods">
-			<ul>
-				<li class="bxg-clear" v-for="(item,index) in items">
-					<div class="bxg-goods-img">
-						<img v-bind:src='item.img'/>
-					</div>
-					<div class="bxg-goods-content">
-						<span>{{item.name}}</span>
-						<span>月销{{item.sale}}</span>
-						<span><small>￥</small>{{item.price}}</span>
-					</div>
-					<div class="bxg-goods-num">
-						<strong class="bxg-minus" v-on:click="minNum(index)">-</strong>
-						<span class="bxg-number">{{item.num}}</span>
-						<strong class="bxg-add" v-on:click="addNum(item)">+</strong>
-					</div>
-				</li>
-			</ul>
-		</div>
-	
-		<div class="bxg-pay">
-			<div class="bxg-goods-logo">
-				<div class="bxg-num">{{goodsNum()}}</div>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>购物车</title>
+		<link rel="stylesheet" href="public/css/reset.css" />
+		<link rel="stylesheet" href="css/head.css" />
+		<link rel="stylesheet" href="css/goodsShell.css" />
+
+		<script type="text/javascript" src="public/js/jquery.min.js"></script>
+		<script type="text/javascript" src="public/js/vue.min.js"></script>
+		<script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="public/js/public.js"></script>
+
+	</head>
+
+	<body>
+		<!--头部-->
+		<header class="bxg-header">
+			<a class="bxg-head-icon bxg-back" href="javascript:history.go(-1);"></a>
+			购物车
+		</header>
+		<div class="bxg-content" id="goods-list">
+			<div class="bxg-gooods">
+				<ul>
+					<li class="bxg-clear" v-for="(item,index) in items">
+						<div class="bxg-goods-img">
+							<img v-bind:src='item.img' />
+						</div>
+						<div class="bxg-goods-content">
+							<span>{{item.name}}</span>
+							<span><small>￥</small>{{item.price}}</span>
+						</div>
+						<div class="bxg-goods-num">
+							<strong class="bxg-minus" v-on:click="minNum(index)">-</strong>
+							<span class="bxg-number">{{item.num}}</span>
+							<strong class="bxg-add" v-on:click="addNum(item)">+</strong>
+						</div>
+					</li>
+				</ul>
 			</div>
-			<div >
-				<div class="bxg-price"><small>￥</small><span>{{priceSum()}}</span></div>
-				<div>支付后送货上门</div>
+
+			<div class="bxg-pay">
+				<div class="bxg-goods-logo">
+					<div class="bxg-num">{{goodsNum()}}</div>
+				</div>
+				<div>
+					<div class="bxg-price"><small>￥</small><span>{{priceSum()}}</span></div>
+					<div>支付后送货上门</div>
+				</div>
+				<div class="bxg-paybth" v-on:click="goPay">去支付</div>
 			</div>
-			<div class="bxg-paybth" v-on:click="goPay">去支付</div>
-		</div>
-		<div class="bxg-footer" id="bxg-footer">
-			<ul>
-				<li v-for="list in lists">
-					<a v-bind:href = 'list.href' title="">
-						<i class="bxg-footer-icon"></i>
-						{{list.nav}}
-					</a>
-				</li>
-			</ul>
-		</div>
-		<!--弹框-->
-		<div class="bxg-alert-tip" v-bind:class="{ bxgActive:isActive}">
-			<div class="bxg-close" v-on:click="closeTip"></div>
-			<div class="bxg-tip-img">
-				<a class="bxg-lucy">马上充值</a>
+			<div class="bxg-footer" id="bxg-footer">
+				<ul>
+					<li v-for="(list,index) in lists" v-if="index == 3" :class="{iconActive:true}">
+						<a v-bind:href='list.href' title="">
+							<i class="bxg-big-icon"></i> {{list.nav}}
+						</a>
+					</li>
+					<li v-else>
+						<a v-bind:href='list.href' title="">
+							<i class="bxg-footer-icon"></i> {{list.nav}}
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--弹框-->
+			<div class="bxg-alert-tip" v-bind:class="{ bxgActive:isActive}">
+				<div class="bxg-close" v-on:click="closeTip"></div>
+				<div class="bxg-tip-img">
+					<a class="bxg-lucy">马上充值</a>
+				</div>
 			</div>
 		</div>
-	</div>
-	<script type="text/javascript">
-		var cartList = new Vue({
-			el:'#goods-list',
-			data: {
-				isActive:false,
-				items:[],
-				lists:[]
-			},
-			created:function(){
-				this.getGoods();
-				this.getfooter();
-			},
-			methods: {
-				getGoods:function(){
-					var that = this;
-					that.$http({           //调用接口
-                        method:'GET',
-                        url:"json/data.json"  //this指data
-                    }).then(function(res){  //接口返回数据
-                        this.items=res.data;                        
-                    },function(error){
-                    	
-                    })
-				},
-				getfooter:function(){
-					var that = this;
-					that.$http({           //调用接口
-                        method:'GET',
-                        url:"json/footer.json"  //this指data
-                    }).then(function(res){  //接口返回数据
-                        this.lists=res.data;                        
-                    },function(error){
-                    	
-                    })
-				},
-			  	goodsNum: function () {
-			  		var sum = 0;
-			  		this.items.forEach(function(item,index){
-			  			sum += Number(item.num);
-			  		});
-			  		return sum;
-			  	},
-			  	priceSum:function(){
-			  		var sum = 0;
-			  		this.items.forEach(function(item,index){
-			  			sum += Number(item.price)*Number(item.num);
-			  		});
-			  		return sum;
-			  	},
-			  	addNum:function(item){
-			  		
-			  		item.num++;
-			  	},
-			  	minNum:function(index){
-			  		this.items[index].num--;
-			  		if(this.items[index].num == 0){
-			  			this.items.splice(index,1);  
-			  		}
-			  	},
-			  	goPay:function(){
-			  		this.isActive = true;
-			  	},
-			  	closeTip:function(){
-			  		this.isActive = false;
-			  		//跳转
-			  		window.location.href = "http://m.bxgogo.com";
-			  	}
-			  	
+		<script type="text/javascript">
+			
+
+			function getRequest(){
+				var url = location.search; 	
+				var obj = {},arr = [],val;
+				if(url.indexOf("?") != -1) {
+					var str = url.substr(url.indexOf("?") + 1);
+					arr = str.split("&");
+					for(var i = 0; i < arr.length; i++){
+						val = arr[i].split('=')[0];
+						if(!obj[val]){
+							obj[val] = arr[i].split('=')[1];
+						}
+					}
+				}
+				return obj
 			}
-		});
-	</script>
-</body>
+
+			var cartList = new Vue({
+				el: '#goods-list',
+				data: {
+					isActive: false,
+					items: [],
+					lists: []
+				},
+				created: function() {
+					this.getGoods();
+					this.getfooter();
+				},
+				methods: {
+					getGoods: function() {
+						var that = this;
+						that.$http({ //调用接口
+							method: 'GET',
+							url: "json/data.json" //this指data
+						}).then(function(res) { //接口返回数据
+							this.items = res.data;
+						}, function(error) {
+
+						})
+					},
+					getfooter: function() {
+						var that = this;
+						that.$http({ //调用接口
+							method: 'GET',
+							url: "json/footer.json" //this指data
+						}).then(function(res) { //接口返回数据
+							this.lists = res.data;
+						}, function(error) {
+
+						})
+					},
+					goodsNum: function() {
+						var sum = 0;
+						this.items.forEach(function(item, index) {
+							sum += Number(item.num);
+						});
+						return sum;
+					},
+					priceSum: function() {
+						var sum = 0;
+						this.items.forEach(function(item, index) {
+							sum += Number(item.price) * Number(item.num);
+						});
+						return sum;
+					},
+					addNum: function(item) {
+
+						item.num++;
+					},
+					minNum: function(index) {
+						this.items[index].num--;
+						if(this.items[index].num == 0) {
+							this.items.splice(index, 1);
+						}
+					},
+					goPay: function() {
+						this.isActive = true;
+					},
+					closeTip: function() {
+						this.isActive = false;
+						//跳转
+						window.location.href = "http://m.bxgogo.com";
+					}
+
+				}
+			});
+		</script>
+	</body>
+
 </html>
