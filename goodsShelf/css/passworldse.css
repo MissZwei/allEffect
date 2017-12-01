@@ -91,9 +91,11 @@
   box-sizing: border-box;
   border-right: 1px solid #dddddd;
   height: 1.11111111rem;
+  line-height: 1.11111111rem;
   float: left;
   width: 16.66666667%;
   background: #FFF;
+  font-size: 0.41666667rem;
 }
 .mm_box li:last-child {
   border-right: none;

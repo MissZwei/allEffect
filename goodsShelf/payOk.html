@@ -7,6 +7,7 @@
 	    <link rel="stylesheet" href="public/css/reset.css" />
 	    <link rel="stylesheet" href="css/head.css" />
 	    <link rel="stylesheet" href="css/payok.css" />
+	    <link rel="stylesheet" href="css/drawgame.css" />
 	    <script type="text/javascript" src="public/js/public.js" ></script>
 	</head>
 	<body>
@@ -24,5 +25,65 @@
 				<a href="" title="">首页</a>
 			</div>
 		</div>
+		
+		<div id="y_a" class="bxg-shade">
+			<!--<div id="fade" class="black_overlay"> </div>-->
+			<div class="drawGame">
+				<div class="drawTheme"></div>
+				<div class="drawPacket">
+					<div class="open"></div>
+					<div class="openBtn"></div>
+					<div class="flutter"></div>
+				</div>
+			</div>
+
+			<div id="draw" class="draw">
+				
+				<div class="draw-centen">
+					<div class="draw-top draw-top1"></div>
+					<div>恭喜您，获得了</div>
+					<div id="money"><small>￥</small>0</div>
+					<div>幸运金<span id="monee">对不起，你抽过啦！</span></div>
+				</div>
+				<a href="/" title="">返回首页</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="public/js/jquery-1.8.3.min.js" ></script>
+		<script>
+			$(function(){
+				
+                setTimeout(function(){
+                    $(".bxg-shade,.drawGame").fadeIn();
+                },1000);
+                $(".openBtn").on('click',function(){
+                    $(".drawGame").fadeOut();
+                    $(".draw").fadeIn();
+                    
+//                  $.ajax({
+//                      type:"get",
+//                      data:{oid:'{$data.oid}',a_yp:'{$data.zmoney}'},
+//                      url:"http://m.bxgogo.com/index/orderpay/Luckdraw",
+//                      success:function(data){
+//                          console.log(data);
+//                          if(data.state==1111){
+//                              console.log(data.money);
+//                              $("#money").html("￥"+data.money)
+//                              $("#monee").html(data.money)
+//                              $(".drawGame").fadeOut();
+//                              $(".draw").fadeIn();
+//                          }
+//                      },
+//                      error:function(data){
+//                          console.log("网络不稳定！");
+//                      }
+//                  });
+
+                });
+            })
+//			if({$asd}==1){
+				
+				
+//			}
+		</script>
 	</body>
 </html>

@@ -1,0 +1,356 @@
+.bxg-shade{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:2;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+}
+
+.drawGame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -560/72/2rem;
+    margin-top: -839/72/2rem;
+    width: 560/72rem;
+    height: 839/72rem;
+    background: url(../images/packet/draw_bg.jpg)no-repeat;
+    background-size: 100% 100%;
+    z-index: 3;
+    display: none;
+}
+.drawTheme {
+    margin: 108/72rem auto 70/72rem;
+    width: 473/72rem;
+    height: 216/72rem;
+    background: url(../images/packet/draw_theme.png)no-repeat;
+    background-size: 100% 100%;
+}
+.drawPacket {
+    position: relative;
+    margin: 0 auto;
+    width: 406/72rem;
+    height: 389/72rem;
+    background: url(../images/packet/draw_packet.png)no-repeat;
+    background-size: 100% 100%;
+}
+//抽奖“开”
+.open {
+    position: absolute;
+    width: 168/72rem;
+    height: 168/72rem;
+    top: 178/72rem;
+    left: 50%;
+    margin-left: -168/72/2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px #ffcc00;
+    background: url(../images/packet/draw_cir.png)no-repeat center;
+    background-size: 168/72rem 168/72rem;
+    -webkit-animation: draw 4s ease-in-out infinite;
+    -moz-animation: draw 4s ease-in-out infinite;
+    animation: draw 4s ease-in-out infinite;
+   
+}
+@-webkit-keyframes draw {
+    from {
+        box-shadow: 0 0 10px #ffcc00;
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    60% {
+        box-shadow: 0 0 70px #ffcc00;
+        transform: rotate(216deg);
+        -ms-transform: rotate(216deg);
+        -webkit-transform: rotate(216deg);
+        -o-transform: rotate(216deg);
+        -moz-transform: rotate(216deg);
+    }
+    to {
+        box-shadow: 0 0 10px #ffcc00;
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+    }
+}
+@-moz-keyframes draw {
+    from {
+        box-shadow: 0 0 10px #ffcc00;
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    60% {
+        box-shadow: 0 0 70px #ffcc00;
+        transform: rotate(216deg);
+        -ms-transform: rotate(216deg);
+        -webkit-transform: rotate(216deg);
+        -o-transform: rotate(216deg);
+        -moz-transform: rotate(216deg);
+    }
+    to {
+        box-shadow: 0 0 10px #ffcc00;
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+    }
+}
+@keyframes draw {
+    from {
+        box-shadow: 0 0 10px #ffcc00;
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    60% {
+        box-shadow: 0 0 70px #ffcc00;
+        transform: rotate(216deg);
+        -ms-transform: rotate(216deg);
+        -webkit-transform: rotate(216deg);
+        -o-transform: rotate(216deg);
+        -moz-transform: rotate(216deg);
+    }
+    to {
+        box-shadow: 0 0 10px #ffcc00;
+        transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+    }
+}
+
+.openBtn {
+    position: absolute;
+    top: 233/72rem;
+    left: 50%;
+    margin-left: -49/72/2rem;
+    width: 49/72rem;
+    height: 57/72rem;
+    background: url(../images/packet/draw_open.png)no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+.flutter {
+    position: absolute;
+    top: 90/72rem;
+    left: 290/72rem;
+    width: 186/72rem;
+    height: 158/72rem;
+    background: url(../images/packet/draw_flutter.png)no-repeat;
+    background-size: 100% 100%;
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -webkit-animation: drawflutter 2s linear infinite;
+    -moz-animation: drawflutter 2s linear infinite;
+    animation: drawflutter 2s linear infinite;
+}
+@-webkit-keyframes drawflutter {
+    0% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        -webkit-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    75% {
+        transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+}
+@-moz-keyframes drawflutter {
+    0% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+
+    }
+    25% {
+        transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        -webkit-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    75% {
+        transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+}
+@keyframes drawflutter {
+    0% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+
+    }
+    25% {
+        transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        -webkit-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+    75% {
+        transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0);
+        -ms-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -o-transform: rotate(0);
+        -moz-transform: rotate(0);
+    }
+}
+
+//抽到金额
+
+.draw{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left:-437/72/2rem;
+    margin-top:-778/72/2rem; 
+    width: 437/72rem;
+    height: 778/72rem;
+    background: url(../images/packet/beijing.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 3;
+    display: none;
+}
+
+.draw-centen {
+    margin:235/72rem auto 0;
+    height: 362/72rem;
+    width: 346/72rem;
+    background: #fff4de;
+    border-radius:5/72rem;
+    position: relative;
+    color: #f9285e;
+}
+.draw-top {
+    position: absolute;
+    top:-135/72rem;
+    left:50%;
+    margin-left:-277/72/2rem;
+    width: 277/72rem;
+    height: 159/72rem;
+}
+.draw-top1{
+    background: url(../images/packet/draw1.png)no-repeat; 
+    background-size: 100% 100%;
+}
+.draw-top2 {
+    background: url(../images/packet/draw2.png)no-repeat;
+    background-size: 100% 100%;
+}
+
+.draw-centen > div:nth-child(2) {
+    padding:60/72rem 0;
+    font-size: 28/72rem;
+    color: #f9285e;
+    text-align: center;
+}
+.draw-centen > div:nth-child(3) {
+    font-size: 80/72rem;
+    color: #f9285e;
+    text-align: center;
+}
+.draw-centen > div:nth-child(3) small{
+    font-size: 40/72rem;
+}
+
+.draw-centen > div:nth-child(4) {
+    margin-top:75/72rem;
+    font-size: 24/72rem;
+    color: #f9285e;
+    text-align: center;
+}
+.draw-centen > div:nth-child(4) span{
+    padding-left:10/72rem;
+}
+.draw  a {
+    display: block;
+    margin: 38/72rem auto 0; 
+    width: 362/72rem;
+    height: 60/72rem;
+    line-height: 60/72rem;
+    font-size: 36/72rem;
+    color: #f9285e;
+    text-align: center;
+    background: #febc1d;
+    border-radius: 30/72rem;
+     
+}
