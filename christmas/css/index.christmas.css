@@ -21,6 +21,10 @@ img {
   width: 100%;
   height: 100%;
 }
+.bxg-c-icon {
+  background: url(../img/c_index_icon.png) no-repeat;
+  background-size: 62px 20px;
+}
 .bxg-head {
   position: fixed;
   left: 0;
@@ -53,6 +57,16 @@ img {
   line-height: 40px;
   font-size: 14px;
   color: #fff;
+  overflow: hidden;
+}
+.pos-icon {
+  display: block;
+  float: left;
+  margin-top: 10px;
+  margin-right: 3px;
+  width: 15px;
+  height: 18px;
+  background-position: -46px 0;
 }
 .bxg-search {
   margin: 8px auto;
@@ -414,6 +428,208 @@ img {
   margin-bottom: 0.27777778rem;
   width: 4.375rem;
 }
-.search-page .bxg-head {
+.search-page .bxg-head,
+.position-page .bxg-head {
+  position: relative;
+  border-bottom: 1px solid #ccc;
+}
+.bxg-close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  background-position: 0 0;
+}
+.search-page .bxg-search-text {
+  margin: 0 80px 0 40px;
+  height: 38px;
+  line-height: 40px;
+  border-bottom: 1px solid red;
+  border-radius: 0;
+}
+.bxg-select {
+  position: relative;
+  text-align: center;
+  width: 60px;
+}
+.bxg-select ul {
+  position: absolute;
+  width: 100px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+.type-style {
+  float: left;
+  display: block;
+  margin-top: 7.5px;
+  margin-left: 15px;
+  margin-right: -5px;
+  width: 25px;
+  height: 25px;
+  background: red;
+}
+.bxg-select ul li:first-child {
+  border-bottom: 1px solid #fff;
+}
+.search-page .bxg-search-text > div {
+  float: left;
+  font-size: 16px;
+  position: relative;
+}
+.select-type {
+  display: block;
+  position: absolute;
+  right: 5px;
+  bottom: 12px;
+  width: 6px;
+  height: 6px;
+  background-position: -22px 0;
+}
+.bxg-search-btn {
+  position: absolute;
+  top: 7.5px;
+  right: 10px;
+  width: 60px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
   background: #A50001;
+  border-radius: 5px;
+}
+.bxg-input {
+  height: 32px;
+}
+.bxg-input input {
+  display: block;
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  border: none;
+  background: none;
+}
+.history,
+.pro-search,
+.bxg-city {
+  width: 100%;
+  padding: 20px 15px;
+  font-size: 16px;
+}
+.history-search a {
+  display: inline-block;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background: #eee;
+  color: #888;
+}
+.clear_history {
+  display: block;
+  float: right;
+  height: 20px;
+  width: 15px;
+  background-position: -30px 0;
+}
+.search_results {
+  display: none;
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  background: white;
+  height: 100%;
+}
+.search_results li {
+  color: #8B8B8B;
+  width: 90%;
+  padding: 0 5%;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #D8D8D8;
+}
+.search_option {
+  display: inline-block;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+}
+.search_txt {
+  height: 30px;
+  float: right;
+  font-size: 14px;
+}
+.bxg-confirm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -3.47222222rem;
+  margin-top: -2.77777778rem;
+  width: 6.94444444rem;
+  height: 3.19444444rem;
+  font-size: 16px;
+  color: #fff;
+  border: 0.11111111rem solid transparent;
+  -moz-border-image: url(../img/red_k.png) 10 10 round;
+  -webkit-border-image: url(../img/red_k.png) 10 10 round;
+  -o-border-image: url(../img/red_k.png) 10 10 round;
+  border-image: url(../img/red_k.png) 10 10 round;
+  background: #A50001;
+  border-radius: 0.11111111rem;
+}
+.confirm_span1 {
+  display: block;
+  height: 2.08333333rem;
+  line-height: 2.08333333rem;
+  text-align: center;
+}
+.confirm_span2,
+.confirm_span3 {
+  margin-left: 0.80555556rem;
+  display: inline-block;
+  width: 2.08333333rem;
+  height: 0.69444444rem;
+  line-height: 0.69444444rem;
+  color: #000;
+  text-align: center;
+  background: #fff;
+}
+.position-page,
+.search-page {
+  display: none;
+}
+.position-page header {
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+}
+.current-city .newcity {
+  margin: 10px 0 20px;
+  display: block;
+  width: 33.33333333%;
+  height: 0.90277778rem;
+  line-height: 0.90277778rem;
+  text-align: center;
+  color: #fff;
+  background: #A50001;
+}
+.hot-cities span {
+  float: left;
+  margin-top: 10px;
+  display: block;
+  width: 32%;
+  height: 0.90277778rem;
+  line-height: 0.90277778rem;
+  text-align: center;
+  color: #888;
+  background: rgba(204, 204, 204, 0.3);
+}
+.hot-cities > div span:nth-child(3n+2) {
+  margin-left: 2%;
+  margin-right: 2%;
 }

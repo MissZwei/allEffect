@@ -20,7 +20,7 @@
 			</span>
 			<div class="bxg-search" id="search">搜索店内商品</div>
 			<span class="bxg-position h-position">
-				<i class="c-icon"></i>
+				<i class="bxg-c-icon pos-icon"></i>
 				<span id="city">定位城市</span>
 			</span>
 		</header>
@@ -419,16 +419,84 @@
 	<!--搜索页-->
 	<div class="search-page">
 		<header class="bxg-head bxg-search-head">
-			<span class="bxg-close"></span>
-			<div class="bxg-search" id="search">
-				<input type="text" value="" placeholder="搜索内容"/>
+			<div class="bxg-c-icon bxg-close"></div>
+			<div class="bxg-search-text bxg-clear" id="search">
+				<div class="bxg-select">
+					<span class="search-type">
+						宝贝
+						<i class="bxg-c-icon select-type"></i>
+					</span>
+					<ul>
+						<li class="bxg-clear"><i class="type-style"></i>宝贝</li>
+						<li class="bxg-clear"><i class="type-style"></i>店铺</li>
+					</ul>
+				</div>
+				<div class="bxg-input">
+					<input type="text" value="" placeholder="输入搜索内容"/>
+				</div>
 			</div>
-			<span class="bxg-search-btn">搜索</span>
+			<div class="bxg-search-btn">搜索</div>
 		</header>
+		<ul class="search_results">
+			<li data="http://m.bxgogo.com/index/search/index/search_txt/Focus/search_id/1.html" onclick="result(this)">
+				<span class="search_option">Focus</span>
+				<span class="search_txt">
+					<span class="search_num"></span>
+					共1件商品
+				</span>
+			</li>
+		</ul>
+		
+		<div class="history">
+			<div class="history_div">
+				<p>历史搜索<i class="bxg-c-icon clear_history"></i></p>
+				
+			</div>
+		</div>
+		<div class="bxg-confirm">
+			<span class="confirm_span1">确认清除所有搜索记录吗？</span>
+			<span class="confirm_span2">是</span>
+			<span class="confirm_span3">否</span>
+		</div>
+		<div class="pro-search">
+			<div class="history-search">
+				<p>热门搜索</p>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/衣服/search_id/1"><span>衣服</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/鞋/search_id/1"><span>鞋</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/玩具/search_id/1"><span>玩具</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/睡衣/search_id/1"><span>睡衣</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/毛绒玩具/search_id/1"><span>毛绒玩具</span></a>
+               	<a href="http://m.bxgogo.com/index/search/index/search_txt/零食/search_id/1"><span>零食</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/杯子/search_id/1"><span>杯子</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/面膜/search_id/1"><span>面膜</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/手套/search_id/1"><span>手套</span></a>			
+			</div>
+		</div>
 	</div>
-	<!--定位页-->
+	<!--城市选择页-->
+	<div class="position-page">
+		<header class="bxg-head bxg-search-head">
+			<div class="bxg-c-icon bxg-close"></div>
+			定位城市
+		</header>
+		<div class="bxg-city">
+			<div class="current-city">
+				<p>当前定位城市</p>
+				<span class="newcity">城市</span>
+			</div>
+			<div class="hot-cities"> 
+				<p>热门城市</p>
+				<div>
+					<span>保定</span>
+					<span>保定</span>
+					<span>保定</span>
+					<span>保定</span>
+					<span>保定</span>
+				</div>
+			</div>
+		</div>
+	</div>
 	
-
 	<script type="text/javascript" src="public/js/jquery-1.8.3.min.js" ></script>
 	<script type="text/javascript" src="public/js/swiper.min.js" ></script>
 	<!--预加载-->
@@ -436,14 +504,23 @@
 	<script type="text/javascript">
 		$(function(){
 		//顶部自适应
-			var searchAuto = function(){
+			//主页面
+			var mainAuto = function(){
 				var w = $(window).width()-175;
 				$(".bxg-search").width(w);
 			};
+			mainAuto();
+			//搜索页
+			var searchAuto = function(){
+				var w = $(window).width()-190;
+				$(".bxg-input").width(w);
+			};
 			searchAuto();
 			$(window).resize(function(){
+				mainAuto();
 				searchAuto();
 			});
+		
 		//轮播图
 			var bannerSwiper = new Swiper('.bxg-index-banner', {
 			    pagination : '.swiper-pagination',
@@ -517,6 +594,42 @@
 			
 		//图片预加载
 			$(".bxg-lazy img").lazyload();
+			
+		//页面切换
+			$(".bxg-search").click(function(){
+				$(".main-page").hide();
+				$(".search-page").show();
+			});
+			$(".bxg-position").click(function(){
+				$(".main-page").hide();
+				$(".position-page").show();
+			});
+			$(".bxg-close").click(function(){
+				$(".main-page").show();
+				$(".search-page,.position-page").hide();
+			});
+		//搜索页
+		
+			//清除历史搜索记录
+			$(".clear_history").click(function(){
+				$(".bxg-confirm").show();
+			});
+			$(".confirm_span3").click(function(){
+				$(".bxg-confirm").fadeOut();
+			});
+			$(".confirm_span2").click(function(){
+				//需请求ajax
+				$(".bxg-confirm").fadeOut();
+			});
+			
+		//搜索页输入搜索功能
+			$(".search-type").toggle(function(){
+				$(this).parent().find('ul').show();
+			},function(){
+				$(this).parent().find('ul').hide();
+			});
+			//点击宝贝---点击店铺获取数据
+			
 		})
 	</script>
 </body>
