@@ -1,0 +1,65 @@
+<div class="bxg-floor bxg-quality">				
+	<div class="bxg-goods-title"></div>
+	<div class="bxg-floor-place">
+		<ul class="bxg-clear bxg-lazy">
+			{if condition="!empty($value['shop'][0])"}
+				<li>
+					<a href="{$value['shop'][0]['blink']}" title="">
+						<img data-img="{$value['shop'][0]['bpic']}{:config('images')}" />
+					</a>
+				</li>
+			{/if}
+			{if condition="!empty($value['shop'][1])"}
+				<li>
+					<a href="{$value['shop'][1]['blink']}"><img xsrc="{$value['shop'][1]['bpic']}{:config('images')}" src="{$value['shop'][1]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+				</li>
+				{/if}
+				{if condition="!empty($value['shop'][2])"}
+				<li>
+					<a href="{$value['shop'][2]['blink']}"><img xsrc="{$value['shop'][2]['bpic']}{:config('images')}" src="{$value['shop'][2]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+				</li>
+				{/if}
+				{if condition="!empty($value['shop'][3])"}
+				<li>
+					<a href="{$value['shop'][3]['blink']}"><img xsrc="{$value['shop'][3]['bpic']}{:config('images')}" src="{$value['shop'][3]['bpic']}" alt="" class="wait-load"/></a>
+				</li>
+				{/if}
+				{if condition="!empty($value['shop'][4])||!empty($value['shop'][5])"}
+				<li class="goods-bg-lt">
+				
+				{if condition="!empty($value['shop'][4])"}
+					<a href="{$value['shop'][4]['blink']}""><img xsrc="{$value['shop'][4]['bpic']}{:config('images')}" src="{$value['shop'][4]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+					{/if}
+				{if condition="!empty($value['shop'][5])"}
+					<a href="{$value['shop'][5]['blink']}"><img xsrc="{$value['shop'][5]['bpic']}{:config('images')}" src="{$value['shop'][5]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+				{/if}
+				</li>
+				{/if}
+				{if condition="!empty($value['shop'][6])||!empty($value['shop'][7])"}
+				<li class="goods-bg-lt">
+					{if condition="!empty($value['shop'][6])"}
+					<a href="{$value['shop'][6]['blink']}"><img xsrc="{$value['shop'][6]['bpic']}{:config('images')}" src="{$value['shop'][6]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+					{/if}
+				{if condition="!empty($value['shop'][7])"}
+					<a href="{$value['shop'][7]['blink']}"><img xsrc="{$value['shop'][7]['bpic']}{:config('images')}" src="{$value['shop'][7]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+			
+				{/if}
+				</li>
+				{/if}
+			
+		</ul>
+	</div>
+	
+	{if condition="!empty($value['ad'])"}
+		<div class="bxg-floor-banner">
+			<div class="swiper-wrapper bxg-lazy">
+				{foreach name="value.ad" item="ad"}
+		      		<div class="swiper-slide"><a href="{$ad.url}" title="{$ad.title}"><img data-img="{$ad.img}{:config('images')}" src="" alt=""/></a></div>
+		      	{/foreach}
+		      	
+		    </div>
+		    <div class="swiper-pagination"></div>
+		</div>
+		<div class="bxg-quality-top"></div>
+	{/if}
+</div>

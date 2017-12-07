@@ -1,0 +1,54 @@
+<section class="goods goods_4">
+			<div class="goods-bar"><span class="goods-bar4">居家必备</span></div>
+			<ul class="goods-bg">
+				{if condition="!empty($value['shop'][0])"}
+				<li>
+				<a href="{$value['shop'][0]['blink']}"><img xsrc="{$value['shop'][0]['bpic']}{:config('images')}" src="{$value['shop'][0]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+				</li>
+				{/if}
+				{if condition="!empty($value['shop'][1])||!empty($value['shop'][2])"}
+				<li class="goods-bg-lt">
+				
+				{if condition="!empty($value['shop'][1])"}
+					<a href="{$value['shop'][1]['blink']}""><img xsrc="{$value['shop'][1]['bpic']}{:config('images')}" src="{$value['shop'][1]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+					{/if}
+				{if condition="!empty($value['shop'][2])"}
+					<a href="{$value['shop'][2]['blink']}"><img xsrc="{$value['shop'][2]['bpic']}{:config('images')}" src="{$value['shop'][2]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+				{/if}
+				</li>
+				{/if}
+				
+				{if condition="!empty($value['shop'][3])"}
+				<li>
+				<a href="{$value['shop'][3]['blink']}"><img xsrc="{$value['shop'][3]['bpic']}{:config('images')}" src="{$value['shop'][3]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+				</li>
+				{/if}
+				{if condition="!empty($value['shop'][4])||!empty($value['shop'][5])"}
+				<li class="goods-bg-lt">
+				
+				{if condition="!empty($value['shop'][4])"}
+					<a href="{$value['shop'][4]['blink']}""><img xsrc="{$value['shop'][4]['bpic']}{:config('images')}" src="{$value['shop'][4]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+					{/if}
+				{if condition="!empty($value['shop'][2])"}
+					<a href="{$value['shop'][5]['blink']}"><img xsrc="{$value['shop'][5]['bpic']}{:config('images')}" src="{$value['shop'][5]['bpic']}{:config('images')}" alt="" class="wait-load"/></a>
+				{/if}
+				</li>
+				{/if}
+					
+			</ul>
+			{if condition="!empty($value['ad'])"}
+			<div class="banner" id="ad_4">
+				<div class="bd">
+					<ul>
+						{foreach name="value.ad" item="ad"}
+						<li><a href="{$ad.url}" title="{$ad.title}"><img xsrc="{$ad.img}{:config('images')}" src="{$ad.img}{:config('images')}" alt="{$ad.title}" class="wait-load"/></a></li>
+					{/foreach}
+					</ul>
+				</div>
+				<!--轮播图焦点-->
+				<div class="hd">
+					<ul></ul>
+				</div>
+			</div>
+			{/if}
+		</section>

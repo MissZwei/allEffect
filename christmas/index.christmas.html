@@ -406,7 +406,10 @@
 							</a>
 						</div>
 					</div>
+					<div class="bxg-getmore"></div>
+			        <div class="bxg-empty">~~~没有更多了~~~</div>
 				</div>
+				
 				
 			</div>
 		
@@ -414,7 +417,33 @@
 		
 		</div>
 		
-		
+		<div class="bxg-footer">
+			<ul>
+				<li class="cur"> <a href="http://127.0.0.7/index/index/index.html">
+				    <i class="n_1"></i>
+				    <span>首页</span></a>
+	            </li>
+				<li ><a href="http://127.0.0.7/index/res/index.html">
+				    <i class="n_2"></i>
+				    <span>好店</span></a>
+	            </li>
+				<li ><a href="http://127.0.0.7/index/category/index.html">
+				      <i class="n_3"></i>
+	                  <span>分 类</span>
+	               </a>
+	             </li>
+				<li ><a href="http://m.bxgogo.com/index/cart/index">
+				   <!--<div class="cart-num" id="cart_quantity">0</div>-->
+				   <i class="n_4"></i>
+				   <span>购物</span>
+				   </a>
+				</li>
+				<li ><a href="http://127.0.0.7/index/user/index.html">
+				    <i class="n_5"></i>
+				    <span>我的</span></a>
+				</li>
+			</ul>
+		</div>
 	</div>
 	<!--搜索页-->
 	<div class="search-page">
@@ -427,8 +456,8 @@
 						<i class="bxg-c-icon select-type"></i>
 					</span>
 					<ul>
-						<li class="bxg-clear"><i class="type-style"></i>宝贝</li>
-						<li class="bxg-clear"><i class="type-style"></i>店铺</li>
+						<li class="bxg-clear"><i class="bxg-c-icon type-style"></i>宝贝</li>
+						<li class="bxg-clear"><i class="bxg-c-icon type-style"></i>店铺</li>
 					</ul>
 				</div>
 				<div class="bxg-input">
@@ -448,9 +477,17 @@
 		</ul>
 		
 		<div class="history">
-			<div class="history_div">
+			<div class="history-div">
 				<p>历史搜索<i class="bxg-c-icon clear_history"></i></p>
-				
+				<a href="http://m.bxgogo.com/index/search/index/search_txt/衣服/search_id/1"><span>衣服</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/鞋/search_id/1"><span>鞋</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/玩具/search_id/1"><span>玩具</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/睡衣/search_id/1"><span>睡衣</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/毛绒玩具/search_id/1"><span>毛绒玩具</span></a>
+               	<a href="http://m.bxgogo.com/index/search/index/search_txt/零食/search_id/1"><span>零食</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/杯子/search_id/1"><span>杯子</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/面膜/search_id/1"><span>面膜</span></a>
+                <a href="http://m.bxgogo.com/index/search/index/search_txt/手套/search_id/1"><span>手套</span></a>			
 			</div>
 		</div>
 		<div class="bxg-confirm">
@@ -497,8 +534,15 @@
 		</div>
 	</div>
 	
+	<!--弹框-->
+	<div class="bxg-alert-tip"></div>
+	
+	 
+
+	
 	<script type="text/javascript" src="public/js/jquery-1.8.3.min.js" ></script>
 	<script type="text/javascript" src="public/js/swiper.min.js" ></script>
+	<script type="text/javascript" src="http://m.bxgogo.com/static/js/geolocation.min.js"></script>
 	<!--预加载-->
 	<script type="text/javascript" src="js/lazyload.js" ></script>
 	<script type="text/javascript">
@@ -629,6 +673,47 @@
 				$(this).parent().find('ul').hide();
 			});
 			//点击宝贝---点击店铺获取数据
+			
+			
+		//定位功能
+			getLocation();
+			function getLocation(){
+			    var geolocation = new qq.maps.Geolocation("VPTBZ-ZISWI-AU5GE-5CI5U-V7J72-IZFGT", "百信购");
+			    var options = {timeout: 8000};
+			    geolocation.getLocation(showPosition, showErr, options);//精确定位
+			}
+			function showPosition(position) {
+			    $.ajax({
+					type : "get",
+					url:"http://m.bxgogo.com/index/index/latLng",
+					data :position,
+					dataType:'jsonp',
+					success: function(data){		
+						var obj = eval(data); 
+						console.log(obj);
+						if (obj.flag) {		
+						    $(".bxg-alert-tip").html(obj.city).show();//错误信息
+					        setTimeout(function () {
+					            $(".bxg-alert-tip").fadeOut(1000);
+					        }, 1000);//提示层2秒后消失			 
+							$('#city').html(obj.city);	
+							$('.newcity').html(obj.city);
+						}else{
+					        $(".bxg-alert-tip").html(obj.msg).show();//错误信息
+					        setTimeout(function(){
+					            $(".bxg-alert-tip").fadeOut(1000);
+					        }, 1000);//提示层2秒后消失
+					        $('#city').html('城市');	
+						}
+				    }
+				});
+			};
+			function showErr(){
+				$(".bxg-alert-tip").html("定位失败").show();//错误信息
+			    setTimeout(function () {
+			        $(".bxg-alert-tip").fadeOut(2000);
+			    }, 1000);//提示层2秒后消失
+			}
 			
 		})
 	</script>

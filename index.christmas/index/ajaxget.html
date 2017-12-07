@@ -1,0 +1,13 @@
+{foreach name="data" item="v" key="k"}
+<div>
+	<a title="{$v.sname}" href="{:url('index/Goods/index',['id'=>$v.goods_id])}">
+		<div class="bxg-goods-pic">
+			<img data-img="{$v.pic}{:config('index')}" src="{$Think.__APPROOT__}/static/img/mr.png" alt="{$v.goods_sn}"/>
+		</div>
+		<div>
+			<p class="bxg-goods-intro">{$v.sname}</p>
+			<span class="bxg-goods-price">￥{$v.goods_price}</span>
+		</div>
+	</a>
+</div>
+{/foreach}

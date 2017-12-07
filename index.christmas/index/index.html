@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+   	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+   	<meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta property="og:title" content="百信购商城"/>
+    <meta property="og:description" content="一站式购物体验，今日买今日达，快来体验吧"/>
+    <meta property="og:image" content="http://m.bxgogo.com/logojpg.jpg"/>
+    <meta name="description" content="{$instal['depict']}" />
+    <meta name="Keywords" content="{$instal['keyword']}" />
+    <title>百信购</title>
+    <link rel="stylesheet" href="{$Think.__APPROOT__}/static/christmas/public/css/reset.css" />
+    <link rel="stylesheet" href="{$Think.__APPROOT__}/static/christmas/public/css/swiper.min.css" />
+    <link rel="stylesheet" href="{$Think.__APPROOT__}/static/christmas/css/index.christmas.css"/>
+   	<script type="text/javascript" src="{$Think.__APPROOT__}/static/christmas/public/js/public.index.js"></script>
+
+</head>
+<body>
+	<div class="main-page">
+		<div class="bxg-demonstrate">
+			<a href="{$Think.__APPROOT__}/index/hellp/zhize" title="">
+				<img src="{$Think.__APPROOT__}/static/img/top.png" alt=""/> 
+			</a>
+		</div>
+		<header id="index-head" class="bxg-head bxg-index-head">
+			<span class="bxg-logo">
+				<a href="{$Think.__APPROOT__}" title="{$instal['wname']}"><img src="{$Think.__APPROOT__}/static/img/index/logo.png" alt="{$instal['wname']}"/></a>
+			</span>
+			<div class="bxg-search" id="search">搜索店内商品</div>
+			<span class="bxg-position h-position">
+				<i class="bxg-c-icon pos-icon"></i>
+				<span id="city">定位城市</span>
+			</span>
+		</header>
+		
+		<div class="bxg-content">
+			<!--轮播-->
+			 <div class="bxg-index-banner">
+			    <div class="swiper-wrapper">
+			    	{foreach name="slide" item="value" key="key"}
+			    		<div class="swiper-slide">
+			    			<a href="{$value.blink}" title="">
+			    				<img src="{$value.bimg}{:config('images')}" alt="{$value.hname}"/>
+			    			</a>
+			    		</div>
+					{/foreach}
+			    </div>
+			    <div class="swiper-pagination"></div>
+			</div>
+			<!--百信快报-->
+			<div class="bxg-news bxg-clear">
+				<div class="news-title"></div>
+				<div class="news-list" id="news-list">
+					<ul>
+						{foreach name="bulle" item="v" }
+							<li>
+								<a href="#"><i>{$v.tname}</i>{$v.bname}</a>
+							</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+			<!--秒杀-->
+			<div class="bxg-goods bxg-seckill">
+				<div class="bxg-dtime">
+					<div class="seckill-time">
+						<div class="time-wait">距秒杀开始还有</div>
+						<div class="time-start">距秒杀结束还有</div>
+						<span class="count" id="hours1">0</span>
+						<span class="count" id="hours2">0</span>
+						<b>:</b>
+						<span class="count" id="minutes1">0</span>
+						<span class="count" id="minutes2">0</span>
+						<b>:</b>
+						<span class="count" id="seconds1">0</span>
+						<span class="count" id="seconds2">0</span>
+					</div>
+					
+					<div class="seckill-end">
+						今日秒杀已结束
+					</div>
+				</div>
+				<div class="bxg-good-cols3 bxg-seckill-goods bxg-clear bxg-lazy">
+
+					{foreach name="mgoods" item="value"}
+						<div>
+							<input type="hidden" name="url" data-url="{:url('index/goods/index',['id'=>$value.goods_id])}">
+							<a title="{$value.sname}" href="{:url('index/goods/index',['id'=>$value.goods_id])}">
+								<!--<div class="ms-goods"></div>-->
+								<div class="bxg-goods-pic">
+									<img data-img="{$value.pic}{:config('images')}" src="$Think.__APPROOT__}/static/img/mr.png" alt=""/>
+								</div>
+								<div>
+									<p class="bxg-goods-intro">{$value.sname}</p>
+									<span class="bxg-goods-price">￥{$value.goods_price}</span>
+								</div>
+								
+							</a>
+						</div>
+					{/foreach}
+					
+				</div>
+					
+			</div>
+			
+			
+			<!--特价-->
+			<div class="bxg-theme-title"></div>
+			<div class="bxg-goods bxg-bargin">
+				<div class="bargin-top-bg"></div>
+				<div class="bxg-banner">
+					<img src="{$Think.__APPROOT__}/static/christmas/img/bargin_banner.jpg" alt=""/>
+				</div>
+				<div class="bxg-good-cols3 bxg-bargin-goods bxg-clear bxg-lazy">
+					{foreach name="tgoods" item="value"}
+						<div>
+							<a title="{:url('index/goods/index',['id'=>$value.goods_id])}" href="{$value.sname}">
+								<!--<div class="ms-goods"></div>-->
+								<div class="bxg-goods-pic">
+									<img data-img="{$value.pic}{:config('images')}" src="{$Think.__APPROOT__}/static/img/mr.png" alt=""/>
+								</div>
+								<div>
+									<p class="bxg-goods-intro">{$value.sname}</p>
+									<span class="bxg-goods-price">￥{$value.goods_price}</span>
+								</div>
+
+							</a>
+						</div>
+					{/foreach}
+	
+				</div>
+				
+			</div>
+
+			<!-- 上新 -->
+			<div class="bxg-goods bxg-new">
+				<div class="bxg-banner">
+					<img src="{$Think.__APPROOT__}/static/christmas/img/bxg_new.jpg" alt=""/>
+				</div>
+				<div class="bxg-good-cols3 bxg-new-goods bxg-clear bxg-lazy">
+
+					{foreach name="newgoodslist" item="value"}
+						<div>
+							<a title="{:url('index/goods/index',['id'=>$value.goods_id])}" href="{$value.sname}">
+								<div class="bxg-goods-pic">
+									<img data-img="{$value.pic}{:config('images')}" src="{$Think.__APPROOT__}/static/img/mr.png" alt=""/>
+								</div>
+								<div>
+									<p class="bxg-goods-intro">{$value.sname}</p>
+									<span class="bxg-goods-price">￥{$value.goods_price}</span>
+								</div>
+
+							</a>
+						</div>
+					{/foreach}
+	
+				</div>
+			</div>
+
+			
+			<div class="bxg-goods-list">
+				<div class="bxg-list-top"></div>
+				<!--品质优先-->
+				{foreach name="floor" item="value" } {switch name="$value.expand"} {case value="1"} {include file='index/goods_floor_1'/} {/case} {case value="2"} {include file='index/goods_floor_2'/} {/case} {case value="3"} {include file='index/goods_floor_3'/} {/case} {default /} {include file='index/goods_floor_4'/} {/switch} {/foreach}
+				
+				
+				<!--百信推荐-->
+				<div class="bxg-floor bxg-recommend">
+					
+					<div class="bxg-goods-title"></div>
+					<div class="bxg-recommend-list bxg-good-cols3 bxg-clear bxg-lazy">
+						{if condition="!empty($wx)"}
+							{foreach name="wx" item="v" key="k"}
+								<div>
+									<a title="{$v.depict}" href="{:url('index/Goods/index',['id'=>$v.goods_id])}">
+										<!--<div class="ms-goods"></div>-->
+										<div class="bxg-goods-pic">
+											<img data-img="{$v.pic}{:config('images')}" src="{$Think.__APPROOT__}/static/img/mr.png" alt=""/>
+										</div>
+										<div>
+											<p class="bxg-goods-intro">{$v.sname}</p>
+											<span class="bxg-goods-price">￥{$v.goods_price}</span>
+										</div>
+									</a>
+								</div>
+							{/foreach}
+						{/if}
+					</div>
+					<div class="bxg-getmore"></div>
+			        <div class="bxg-empty">~~~没有更多了~~~</div>
+				</div>
+				
+			</div>
+		
+		
+		
+		</div>
+		
+		<div class="bxg-footer">
+			<ul>
+				<li class="cur"> <a href="http://127.0.0.7/index/index/index.html">
+				    <i class="n_1"></i>
+				    <!--<span>首页</span></a>-->
+	            </li>
+				<li ><a href="http://127.0.0.7/index/res/index.html">
+				    <i class="n_2"></i>
+				    <span>好店</span></a>
+	            </li>
+				<li ><a href="http://127.0.0.7/index/category/index.html">
+				      <i class="n_3"></i>
+	                  <span>分 类</span>
+	               </a>
+	             </li>
+				<li ><a href="http://m.bxgogo.com/index/cart/index">
+				   <!--<div class="cart-num" id="cart_quantity">0</div>-->
+				   <i class="n_4"></i>
+				   <span>购物</span>
+				   </a>
+				</li>
+				<li ><a href="http://127.0.0.7/index/user/index.html">
+				    <i class="n_5"></i>
+				    <span>我的</span></a>
+				</li>
+			</ul>
+		</div>
+		
+	</div>
+	<!-- {include file="public/footer_nav"/} -->
+	<!--搜索页-->
+	<div class="search-page">
+		<header class="bxg-head bxg-search-head">
+			<div class="bxg-c-icon bxg-close"></div>
+			<div class="bxg-search-text bxg-clear" id="search">
+				<div class="bxg-select">
+					<span class="search-type" selective="1">
+						<span>宝贝</span>
+						<i class="bxg-c-icon select-type"></i>
+					</span>
+					<ul>
+						<li class="bxg-clear" selective="1"><i class="bxg-c-icon type-style"></i>宝贝</li>
+						<li class="bxg-clear" selective="0"><i class="bxg-c-icon type-style"></i>店铺</li>
+					</ul>
+				</div>
+				<div class="bxg-input">
+					<input type="hidden" value="1" id="search_type">
+					<input type="text" value="" placeholder="输入搜索内容" autofocus="autofocus" id="search_txt" class="search-txt"/>
+				</div>
+			</div>
+			<div class="bxg-search-btn">搜索</div>
+		</header>
+		<ul class="search_results">
+			
+		</ul>
+		
+		<div class="history">
+			<div class="history-div">
+				<p>历史搜索<i class="bxg-c-icon clear_history"></i></p>
+			</div>
+		</div>
+		<div class="bxg-confirm">
+			<span class="confirm_span1">确认清除所有搜索记录吗？</span>
+			<span class="confirm_span2">是</span>
+			<span class="confirm_span3">否</span>
+		</div>
+		<div class="pro-search">
+			<div class="history-search">
+				<p>热门搜索</p>
+				{foreach name="hot" item="v" key="k"}
+              		<a href="http://m.bxgogo.com/index/search/index/search_txt/{$v.keywords}/search_id/1"><span>{$v.keywords}</span></a>
+              	{/foreach}
+			</div>
+		</div>
+	</div>
+	<!--城市选择页-->
+	<div class="position-page">
+		<header class="bxg-head bxg-search-head">
+			<div class="bxg-c-icon bxg-close"></div>
+			定位城市
+		</header>
+		<div class="bxg-city">
+			<div class="current-city">
+				<p>当前定位城市</p>
+				<span class="newcity">城市</span>
+			</div>
+			<div class="hot-cities"> 
+				<p>热门城市</p>
+				<div>
+					<span>保定市</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--弹框-->
+	<div class="bxg-alert-tip"></div>
+	
+	<script type="text/javascript" src="{$Think.__APPROOT__}/static/christmas/public/js/jquery-1.8.3.min.js" ></script>
+	<script type="text/javascript" src="{$Think.__APPROOT__}/static/christmas/public/js/swiper.min.js" ></script>
+	<script type="text/javascript" src="{$Think.__APPROOT__}/static/js/geolocation.min.js"></script>
+	<script type="text/javascript" src="{$Think.__APPROOT__}/static/js/jquery.cookie.js" ></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<!--预加载-->
+	<script type="text/javascript" src="{$Think.__APPROOT__}/static/christmas/js/index.js"></script>
+	<script type="text/javascript" src="{$Think.__APPROOT__}/static/christmas/js/lazyload.js" ></script>
+	<script type="text/javascript" src="http://m.bxgogo.com/static/js/falseData.js"></script>
+	<script type="text/javascript">
+		var page = 1;
+		{if condition="!empty($wxpagea)"}
+			 page = {$wxpagea};
+		{/if}
+		var pageajax=true;
+
+		//遍历搜索历史
+			var storage = window.localStorage;
+			function result(_this){
+				if(storage.a) {
+					storage.a += "&" + $(_this).find('.search_option').text();
+					storage.url += "&" +$(_this).attr('data');
+				}else{
+					storage.a = $(_this).find('.search_option').text();
+					storage.url = $(_this).attr('data');
+				}
+				storageParse();
+				creatHtml();
+				$(".search-txt").val('');
+				location.href=$(_this).attr('data');
+			}
+			creatHtml();
+			function creatHtml() {
+				if(storage.a){
+					var words = storage.a.split("&");
+					words = words.reverse();
+					var urls = storage.url.split("&");
+					urls = urls.reverse();
+					var htmls = '';
+
+					$(words).each(function(index,item){
+						htmls += '<a href="'+$(urls).eq(index)[0]+'"><span>'+item+'</span></a>';
+					});
+					$('.history-div').append(htmls);
+				}
+			}
+			function storageParse(){
+				console.log(storage.a);
+				var words = storage.a.split("&");
+				var urls = storage.url.split("&");
+				words = words.length > 8 ? words.slice(-8) : words;
+				urls = urls.length >8 ? urls.slice(-8) : urls;
+				var word,url;
+
+				$(words).each(function(index, item) {
+					if(index == 0) {
+						word = item;
+					} else {
+						word += "&" + item
+					}
+				});
+				$(urls).each(function(index, item) {
+					if(index == 0) {
+						url = item;
+					} else {
+						url += "&" + item
+					}
+				});
+				storage.a = word;
+				storage.url = url;
+			}
+
+		$(function(){
+
+			// 商品推荐----猜你喜欢
+			$(window).scroll(function(){
+				if($(document).scrollTop() >= $(document).height()-$(window).height()-100){
+				    getGoodsList();
+				    $(".bxg-lazy img").lazyload();
+				 }//到底 
+			});
+			
+			function isWeiXin(){
+				var ua = window.navigator.userAgent.toLowerCase(); 
+				if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+					return true; 
+				}else{	
+					return false; 
+				}
+			}
+			var wxpage = $.cookie('b_wxpage');
+			var urlpj = 'ajaxget';
+			if(wxpage!=null && isWeiXin())
+			{		
+				urlpj = 'ajaxBigGet';
+				
+			}else{
+				urlpj = 'ajaxget';
+			}
+			getGoodsList();
+			function getGoodsList(){
+			 	if(pageajax){
+					$('.bxg-getmore').show();
+					$.ajax({
+						type : "get",
+						url:"{$Think.__APPROOT__}/index/index/"+urlpj+"/p/"+page,
+						async: false,  //同步等待结果的返回
+						success: function(data)
+						{
+							urlpj = 'ajaxget';
+							if(data){
+								$(".bxg-recommend-list").append(data);
+								page++;
+								$('.bxg-empty').hide();
+								pageajax=true;
+							}else{
+								$('.bxg-empty').show();
+								pageajax=false;
+							}
+							$('.bxg-getmore').hide();
+						}
+					}); 
+				}
+			}
+			
+			//图片预加载
+			$(".bxg-lazy img").lazyload();
+
+		})
+	</script>
+	<script type="text/javascript">
+	  var _paq = _paq || [];
+	  /*
+		 统计
+	  */
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+	    var u="http://m.bxgogo.com/";
+	    _paq.push(['setTrackerUrl', u+'count.php']);
+	    _paq.push(['setSiteId', '1']);
+	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'/static/js/tongji.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+</body>
+</html>
