@@ -1,0 +1,95 @@
+[
+	{
+		"name": "冰红茶",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "可口可乐（新老包装随机）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},
+	{
+		"name": "蜗牛酥（牛肉味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},
+	{
+		"name": "毛毛虫",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "双汇王中王2元/根",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "小浣熊 香辣蟹味",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "雪碧500ml",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "手撕蟹柳（蟹肉味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "呀！土豆（番茄酱味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	},{
+		"name": "乐吧（烧烤味）",
+		"price": 10,
+		"sale": 15,
+		"money": 150
+	}
+]

@@ -2,6 +2,22 @@ body {
   font-family: "微软雅黑";
   background: #f0f0f2;
 }
+.bxg-alert {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -3.47222222rem;
+  margin-top: -1.66666667rem;
+  width: 6.94444444rem;
+  height: auto;
+  line-height: 0.5625rem;
+  font-size: 0.40625rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0.125rem;
+}
 .bxg-content {
   position: relative;
   margin-top: 1.25rem;
@@ -208,34 +224,30 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -4.1875rem;
-  margin-top: -4.22916667rem;
-  width: 8.375rem;
-  height: 8.45833333rem;
-  background: url(../images/shell_pay.png) no-repeat center center;
-  background-size: 8.375rem 8.45833333rem;
+  margin-left: -3.84722222rem;
+  margin-top: -4.14583333rem;
+  width: 7.69444444rem;
+  height: 8.29166667rem;
+  background: url(../images/shell_1314.png) no-repeat center center;
+  background-size: 7.69444444rem 8.29166667rem;
 }
-.bxg-lucy {
-  display: block;
-  margin: 6.19444444rem auto 0;
-  width: 4.16666667rem;
-  height: 1.08333333rem;
-  line-height: 1.08333333rem;
-  text-align: center;
-  font-size: 0.41666667rem;
-  color: #fff;
-  border-radius: 0.54166667rem;
-  background-image: -webkit-linear-gradient(-90deg, #ffb503, #ff0486);
-  background-image: -moz-linear-gradient(-90deg, #ffb503, #ff0486);
-  background-image: linear-gradient(-90deg, #ffb503, #ff0486);
-  cursor: pointer;
-}
-.bxg-close {
+.bxg-tip-img a {
   position: absolute;
-  top: 2.5rem;
-  right: 1.04166667rem;
-  width: 0.97222222rem;
-  height: 0.97222222rem;
-  background: url(../images/shell_close.png) no-repeat center center;
-  background-size: 0.97222222rem 0.97222222rem;
+  display: block;
+}
+.bxg-lucy-qr {
+  top: 6.73611111rem;
+  left: 2.16666667rem;
+  width: 1.13888889rem;
+  height: 1.19444444rem;
+  background: url(../images/adv_qr.png);
+  background-size: 100% 100%;
+}
+.bxg-lucy-qx {
+  top: 6.73611111rem;
+  left: 4.30555556rem;
+  width: 1.11111111rem;
+  height: 1.18055556rem;
+  background: url(../images/adv_qx.png);
+  background-size: 100% 100%;
 }

@@ -1,0 +1,126 @@
+body {
+  background: #f0f0f2;
+}
+.bxg-position {
+  position: absolute;
+  top: 0;
+  right: 0.41666667rem;
+  width: 1.80555556rem;
+  height: 1.11111111rem;
+  line-height: 1.11111111rem;
+  font-size: 0.41666667rem;
+  overflow: hidden;
+}
+.bxg-position-icon {
+  float: left;
+  margin-top: 0.1875rem;
+  margin-right: 0.13888889rem;
+  display: block;
+  width: 0.41666667rem;
+  height: 0.73611111rem;
+  background-position: -2.13888889rem 0;
+}
+.bxg-content {
+  position: relative;
+  margin-top: 1.25rem;
+}
+.bxg-search-btn,
+.bxg-search-btn input {
+  display: block;
+  margin: 0 auto;
+  width: 9.16666667rem;
+  height: 0.90277778rem;
+  line-height: 0.90277778rem;
+  font-size: 0.38888889rem;
+  background: #fff;
+  border-radius: 0.20833333rem;
+}
+.bxg-search-btn input {
+  border: none;
+  text-align: center;
+}
+.bxg-history {
+  margin: 0.27777778rem 0;
+}
+.bxg-history .history-div {
+  padding: 0 0.41666667rem;
+}
+.bxg-history p {
+  font-size: 0.38888889rem;
+  color: #888;
+  line-height: 0.83333333rem;
+}
+.bxg-history .history-div a {
+  padding: 0.20833333rem 0.41666667rem;
+  color: #000;
+  font-size: 0.36111111rem;
+  background: #fff;
+  border-radius: 0.13888889rem;
+}
+.history-div i {
+  display: block;
+  margin-top: 0.25rem;
+  margin-right: 0.13888889rem;
+  float: right;
+  width: 0.31944444rem;
+  height: 0.38888889rem;
+  background: url(../images/searchSchool_icon.png) no-repeat center center;
+  background-size: 0.31944444rem 0.38888889rem;
+}
+.search-results {
+  display: none;
+  box-sizing: none;
+  position: fixed;
+  top: 2.36111111rem;
+  left: 0;
+  padding: 0.13888889rem 0.41666667rem 4.16666667rem;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 5;
+  overflow-y: scroll;
+}
+.search-results li {
+  color: #888;
+  height: 0.97222222rem;
+  line-height: 0.97222222rem;
+  font-size: 0.41666667rem;
+  border-bottom: 1px solid #F0F0F2;
+}
+.search-results a:last-child {
+  border-bottom: 0;
+}
+.bxg-confirm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -3.47222222rem;
+  margin-top: -2.77777778rem;
+  width: 6.94444444rem;
+  height: 3.19444444rem;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  border-radius: 0.11111111rem;
+  overflow: hidden;
+}
+.bxg-confirm .confirm-tip {
+  height: 2.08333333rem;
+  line-height: 2.08333333rem;
+}
+.bxg-confirm > div:last-child {
+  border-top: 1px solid #F0F0F2;
+}
+.bxg-confirm > div:last-child span {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 1.11111111rem;
+  line-height: 1.11111111rem;
+}
+.bxg-confirm > div:last-child span:first-child {
+  color: #fff;
+  background: #12B7F5;
+}

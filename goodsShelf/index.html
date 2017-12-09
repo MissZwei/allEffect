@@ -49,7 +49,7 @@
 									<strong v-else class="bxg-minus" v-on:click="minNum(goods,index)" class="{isHide:false}" >-</strong>
 									<span class="bxg-number" v-if="goods.num == 0":class="{isHide:true}">{{goods.num}}</span>
 									<span v-else class="{isHide:false}">{{goods.num}}</span>
-									<strong class="bxg-add" v-on:click="addNum(goods)">+</strong>
+									<strong class="bxg-add" v-on:click="addNum(goods,5)">+</strong>
 								</div>
 							</div> 
 						</li>
@@ -128,9 +128,18 @@
 					  		});
 					  		return sum;
 					  	},
-					  	addNum:function(goods){
-					  		this.num++;
-					  		goods.num++;
+					  	addNum:function(goods,sumNum){
+					  		var number = goods.num+1;
+					  		console.log(number+'====='+sumNum);
+					  		var tar = event.target;
+					  		if(number == sumNum){
+					  			tar.style.background='#ccc';
+					  			this.num++;
+					  			goods.num++;
+					  		}else if(number < sumNum){
+					  			this.num++;
+					  			goods.num++;
+					  		}
 					  	},
 					  	minNum:function(goods,index){
 					  		this.num--;

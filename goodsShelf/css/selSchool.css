@@ -1,0 +1,80 @@
+body {
+  background: #f0f0f2;
+}
+.bxg-position {
+  position: absolute;
+  top: 0;
+  right: 0.41666667rem;
+  width: 1.80555556rem;
+  height: 1.11111111rem;
+  line-height: 1.11111111rem;
+  font-size: 0.41666667rem;
+  overflow: hidden;
+}
+.bxg-position-icon {
+  float: left;
+  margin-top: 0.1875rem;
+  margin-right: 0.13888889rem;
+  display: block;
+  width: 0.41666667rem;
+  height: 0.73611111rem;
+  background-position: -2.13888889rem 0;
+}
+.bxg-content {
+  position: relative;
+  margin-top: 2.15277778rem;
+}
+.bxg-search-btn {
+  position: fixed;
+  top: 1.11111111rem;
+  left: 0;
+  height: 1.18055556rem;
+  font-size: 0.38888889rem;
+  background: #F0F0F2;
+}
+.bxg-search-btn a {
+  display: block;
+  margin: 0.13888889rem 0.41666667rem;
+  width: 9.16666667rem;
+  height: 0.90277778rem;
+  line-height: 0.90277778rem;
+  color: #888;
+  background: #fff;
+  border-radius: 0.20833333rem;
+}
+.bxg-search-btn i {
+  display: block;
+  float: left;
+  margin: 0.25694444rem 0.20833333rem 0.25694444rem 3.61111111rem;
+  width: 0.34722222rem;
+  height: 0.38888889rem;
+  background: url(../images/selSchool_icon.png) no-repeat center center;
+  background-size: 0.34722222rem 0.38888889rem;
+}
+.bxg-area {
+  width: 100%;
+  height: 0.91666667rem;
+  line-height: 0.91666667rem;
+  font-size: 0.41666667rem;
+  text-indent: 0.41666667rem;
+  color: #c3c3c3;
+}
+.bxg-school-list ul {
+  width: 100%;
+  padding: 0 0.41666667rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+.bxg-school-list ul li {
+  height: 1.11111111rem;
+  line-height: 1.11111111rem;
+  border-top: 1px solid #f0f0f2;
+}
+.bxg-school-list ul li:first-child {
+  border-top: 0;
+}
+.bxg-school-list ul li a {
+  display: block;
+  font-size: 0.41666667rem;
+  color: #7a7a7a;
+}

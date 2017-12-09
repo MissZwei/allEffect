@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="public/css/reset.css"/>
+		<link rel="stylesheet" href="css/head.css"/>
+		<link rel="stylesheet" href="css/shop.css" />
+		<script type="text/javascript" src="public/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="public/js/public.js" ></script>
+		<script type="text/javascript" src="public/js/vue.min.js" ></script>
+		<script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js" type="text/javascript" charset="utf-8"></script>    
+	</head>
+	<body >
+		<!--头部-->
+		<div id="bxg-shop">
+			<header class="bxg-header">
+				零食小站
+				<span class="bxg-head-icon bxg-list" v-on:click="showList()"></span>
+				<ul v-bind:class="{isShow:isList}">
+					<li >
+						<span  v-if="isActive":class="status" active="1" v-on:click="shopStatus()">开启店铺</span>
+						<span v-else active="0" v-on:click="shopStatus()">停止营业</span>
+					</li>
+					<li><a href="" title="">查看订单</a></li>
+				</ul>
+				<div class="bxg-alert-tip">
+					<div class="inp-time">
+						<h3>下次营业时间</h3>
+						<div class="inp">
+							<input type="datetime-local" name="openTime" value=""/>
+						</div>
+						<div class="bxg-btn bxg-clear">
+							<span class="cancel-btn" v-on:click="cancel(1);">取消</span>
+							<span class="ok-btn" v-on:click="okBtn(0);">确定</span>
+						</div>
+					</div>
+				</div>
+				
+			</header>
+			<div class="bxg-goods-list">
+				<div class="bxg-search-day">
+					<div class="select-btn">
+						<input type="date" name="selDate" placeholder="查询日销售额"/>
+					</div>
+					
+					<div class="search-btn" v-on:click="daySale()">查询</div>
+					<div class="search-sum" v-on:click="sumSale()">总销量</div>
+				</div>
+				<table>
+					<thead>
+						<th>商品名称</th>
+						<th>单价</th>
+						<th>销量</th>
+						<th>总价</th>
+					</thead>
+					<tbody>
+						<tr v-for = "list in lists">
+							<td>{{list.name}}</td>
+							<td>{{list.price}}</td>
+							<td>{{list.sale}}</td>
+							<td>{{list.money}}</td>
+						</tr>	
+					</tbody>
+				</table>
+			</div>
+			
+			<footer class="bxg-foot bxg-clear">
+				<div class="bxg-sumSale">总销量：{{sumSales()}}</div>
+				<div class="bxg-sumMoney">总金额：{{sumPrice()}}</div>
+			</footer>
+			<div class="bxg-alert"></div>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				var cartList = new Vue({
+					el: '#bxg-shop',
+					data: {
+						isList:true,
+						isActive:false,
+						lists: []
+					},
+					created: function() {
+						this.getGoods("json/shopData.json");
+					},
+					methods: {
+						getGoods: function(url) {
+							var that = this;
+							that.$http({ //调用接口
+								method: 'GET',
+								url: url //this指data
+							}).then(function(res) { //接口返回数据
+								this.lists = res.data;
+							}, function(error) {
+	
+							})
+						},
+						showList:function(){
+							var obj = event.target;
+							if(this.isList){
+								this.isList = false;
+							}else{
+								this.isList = true;
+							}
+						},
+						shopStatus: function(){
+							var obj = event.target;
+							if(obj.getAttribute('active') == '1'){
+								this.isActive=false;
+							}else if(obj.getAttribute('active') == '0'){
+								this.isActive=true;
+								$(".bxg-alert-tip").show();
+							}
+							this.isList = true;
+							//传0停止营业 1开启店铺
+							console.log(obj.getAttribute('active'));
+						},
+						sumSales: function(){
+							var sum = 0;
+							this.lists.forEach(function(item, index) {
+								sum += Number(item.sale);
+							});
+							return sum;
+						},
+						sumPrice: function(){ 
+							var sum = 0;
+							this.lists.forEach(function(item, index) {
+								sum += Number(item.money);
+							});
+							return sum;
+						},
+						daySale: function(){
+							var obj = event.target;
+							var date = $(obj).prev().find('input').val();
+							if(date == ''){
+								$(".bxg-alert").html('请输入查询日期').show();
+								setTimeout(function(){
+									$(".bxg-alert").fadeOut();
+								},2000);
+							}else{
+								this.getGoods("json/shopData2.json");
+							}
+						},
+						sumSale:function(){
+							this.getGoods("json/shopData.json");
+						},
+						cancelBtn:function(status){
+							$(".bxg-alert-tip").fadeOut();
+							
+						},
+						okBtn:function(){
+							var obj = event.target;
+							var date = $(obj).parent().prev().find('input').val();
+							if(date.indexOf('T') > "-1"){
+								var data = date.split('T')[0]+' '+date.split('T')[1];
+								console.log(data);
+							}
+						}
+	
+					}
+				});
+			})
+			
+		</script>
+	</body>
+</html>
