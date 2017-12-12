@@ -51,6 +51,7 @@ body {
   line-height: 0.83333333rem;
 }
 .bxg-history .history-div a {
+  margin-right: 0.13888889rem;
   padding: 0.20833333rem 0.41666667rem;
   color: #000;
   font-size: 0.36111111rem;

@@ -35,7 +35,7 @@
 							<div class="goods-list"  v-for="(goods,index) in bar.list">
 								<div class="bxg-item bxg-clear">
 									<div class="bxg-goods-img">
-										<img v-bind:src='goods.img' alt="" />
+										<img v-lazy='goods.img' src="" alt="" />
 									</div>
 									<div class="bxg-goods-content">
 										<span>{{goods.name}}</span>
@@ -69,21 +69,26 @@
 					</li>
 				</ul>
 			</div>
-			
+			 
 		</div>
+		<script type="text/javascript" src="js/vue-lazyload.js" ></script>
 		<script type="text/javascript">
 			$(function(){
+				
 				var cartList = new Vue({
 					el:'#goods-list',
 					data: {
 						num:0,
 						barisActive:false,
 						bars:[],
-						lists:[]
+						addBars:[],
+						lists:[],
+						page:1
 					},
 					created:function(){
 						this.getBars();
 						this.getfooter();
+						this.listen();
 					},
 					methods: {
 						getBars:function(){
@@ -95,6 +100,7 @@
 		                        url:"json/bars.json"  //this指data
 		                    }).then(function(res){  //接口返回数据
 		                        this.bars=res.data;
+		                        this.addBars = res.data;
 		                    },function(error){
 		                    	
 		                    })
@@ -150,14 +156,44 @@
 					  	listScroll:function(index){
 					  		var h = $(".bxg-goods-list ul li").eq(index).offset().top-$(".bxg-header").height();
 							$("body").scrollTop(h);
+							
 							$(".bxg-goods-list ul li").eq(index).siblings('li').removeClass('barActive');
 							
 
+					  	},
+					  	content:function(){
+					  		var that = this;
+					  		that.$http({           //调用接口
+				                method:'GET',
+				                params:{a:1},
+				                url:"json/bars2.json"  //this指data
+				            }).then(function(res){  //接口返回数据
+//				            	console.log("加载中");
+//				            	console.log(typeof(res));
+				                        this.bars = this.addBars.concat(res.data);
+//				                        console.log(this.bars);
+				            },function(error){
+				                    	
+				            })
+					  	},
+					  	listen:function(){
+					  		var that = this;
+					  		$(window).on('scroll',function(){
+					  			if($(document).scrollTop() >= $(document).height()-$(window).innerHeight()-100){
+					  				that.content();
+					  			}
+					  		}); 
 					  	}
 
 					}
 				});
-				
+				Vue.use(VueLazyload, {
+					preLoad: 1,    //预加载高度的比例
+					error: 'http://m.bxgogo.com/static/img/mr.png',  //图像的src加载失败
+					loading: 'http://m.bxgogo.com/static/img/mr.png', //src的图像加载
+					attempt: 1,  //尝试计数
+					listenEvents: [ 'scroll', 'mousewheel' ]
+				});
 
 				$(window).scroll(function() {
 					//滚动到标杆位置,左侧导航加active

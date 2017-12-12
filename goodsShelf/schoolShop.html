@@ -30,7 +30,9 @@
 						<div class="shop-info">
 							<div>{{list.title}}</div>
 							<div>共{{list.num}}件商品</div>
-							<div><span>{{list.status}}</span><span>{{list.delivery}}</span></div>
+							<div><span v-if="list.status == '营业中'":class="{active:true}">{{list.status}}</span>
+								<span v-else>{{list.status}}</span>
+								<span class="active">{{list.delivery}}</span></div>
 						</div>
 					</div>
 					<div class="shell-footer bxg-clear">
@@ -61,7 +63,7 @@
 							}).then(function(res) { //接口返回数据
 								this.lists = res.data;
 							}, function(error) {
-	
+								
 							})
 						}
 					}

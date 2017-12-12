@@ -1,6 +1,22 @@
 body {
   background: #f0f0f2;
 }
+.bxg-alert {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -2.08333333rem;
+  margin-top: -1.66666667rem;
+  width: 4.16666667rem;
+  padding: 0.13888889rem 0;
+  line-height: 0.5rem;
+  font-size: 0.41666667rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0.11111111rem;
+}
 .bxg-position {
   position: absolute;
   top: 0;

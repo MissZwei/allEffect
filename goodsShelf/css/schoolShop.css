@@ -68,7 +68,7 @@ body {
   color: #c2c2c2;
   border-radius: 0.27777778rem;
 }
-.bxg-shell-list .shop-info > div:last-child span:last-child {
+.bxg-shell-list .shop-info > div:last-child span.active {
   border: 1px solid #12B7F5;
   color: #12B7F5;
 }
@@ -76,7 +76,7 @@ body {
   margin: 0.27777778rem 0 0.06944444rem;
   height: 0.48611111rem;
   line-height: 0.48611111rem;
-  font-size: 0.33333333rem;
+  font-size: 0.30555556rem;
   color: #888;
 }
 .bxg-shell-list .shell-footer i {
