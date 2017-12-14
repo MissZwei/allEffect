@@ -1,0 +1,140 @@
+html{
+    height:100%;
+}
+body{
+    min-height:100%;
+    background: #f0f0f2;
+}
+.bxg-content {
+  position: relative;
+  margin-top: 80/72rem;
+}
+.bxg-between{
+    display: -webkit-box;  
+    display: -webkit-flex;  
+    display: -ms-flexbox;  
+    display: flex;   
+    -webkit-box-pack: justify;  
+    -webkit-justify-content: space-between;  
+    -ms-flex-pack:justify ;  
+    justify-content: space-between; 
+}
+.bxg-tabs{
+    position: fixed;
+    top:80/72rem;
+    width: 100%;
+    height: 80/72rem;
+    line-height: 80/72rem;
+    text-align: center;
+    background: #fff;
+    z-index: 2;
+}
+.bxg-tabs a{
+    display: block;
+    width:100%/3;
+    color: #888;
+    font-size:34/72rem;
+     border-bottom: 1px solid #f0f0f2;
+}
+.tabActive{
+    color: #12B7F5!important;
+    border-bottom: 1px solid #12B7F5!important;
+}
+.bxg-order{
+    position: relative;
+    margin-top:170/72rem;
+//  overflow: hidden;
+}
+.swiper-wrapper{
+    height:100%;
+}
+.swiper-slide{
+    min-height: 600/72rem;
+}
+.bxg-order-list{
+    font-size: 30/72rem;
+}
+.bxg-order-list>li{
+    margin-bottom:5/72rem;
+    padding:0 30/72rem;
+    background: #fff;
+}
+.order-title{
+    height:90/72rem;
+    color: #555555;
+    line-height: 90/72rem;
+}
+.order-title span{
+    margin-right:10/72rem;
+}
+.order-title button{
+    margin:20/72rem 20/72rem;
+    height:50/72rem;
+    width:130/72rem;
+    font-size: 28/72rem;
+    color: #fff;
+    background: #12B7F5;
+    border:none;
+    border-radius: 10/72rem;
+}
+.delivery-ok button{
+    color: #888;
+    background: none;
+    border:none;
+}
+.order-icon{
+    background: url(../images/order_icon.png)no-repeat;
+    background-size:32/72rem 39/72rem;
+}
+.order-title i{
+    margin-top:0.5rem;
+    width:32/72rem;
+    height:18/72rem;
+    background-position:0 -20/72rem;
+}
+.order-title i.tog{
+    background-position:0 0;
+}
+.goods-list{
+    display: none;
+    padding:10/72rem 0;
+    border-top:1px solid #f0f0f2;
+}
+.goods-list ul li{
+    height:50/72rem;
+    line-height: 50/72rem;
+    font-size: 26/72rem;
+}
+.goods-list ul li.refund{
+    color: #b4b4b4;
+}
+.goods-list ul li span,
+.bxg-user-info span{
+    float: left;
+    text-align: center;
+    width:155/72rem;
+    display: block;
+}
+.goods-list ul li span:first-child,
+.bxg-user-info span:first-child{
+    width:350/72rem;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+}
+.bxg-user-info{
+    margin:10/72rem 0 20/72rem;
+    padding-top:25/72rem;
+    border-top:1px solid #F0F0F2;
+    font-size: 26/72rem;
+}
+.emptyImg{
+    margin-top:200/72rem;
+    width: 100%;
+    height:172/72rem;
+    background: url(../images/order_empty.png)no-repeat center center;
+    background-size: 162/72rem 172/72rem;
+}

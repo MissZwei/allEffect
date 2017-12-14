@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>订单</title>
+		<link rel="stylesheet" href="public/css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="public/css/reset.css"/>
+		<link rel="stylesheet" href="css/head.css"/>
+		<link rel="stylesheet" href="css/order.css" />
+		<script type="text/javascript" src="public/js/public.js" ></script>
+		<script type="text/javascript" src="public/js/vue.min.js" ></script>
+		<script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js" type="text/javascript" charset="utf-8"></script>    
+	</head>
+	<body>
+		<!--头部-->
+		<header class="bxg-header">
+			<a class="bxg-head-icon bxg-back" href="javascript:history.go(-1);"></a>
+			我的小店
+		</header>
+		
+		<div class="bxg-content">
+			<div class="bxg-tabs bxg-between">
+		        <a href="#" hidefocus="true" class="tabActive">待配送</a>
+		        <a href="#" hidefocus="true">待退货</a> 
+		        <a href="#" hidefocus="true">已配送</a>  
+			</div>
+			<div class="bxg-order" id="order-list">
+				<div class="swiper-wrapper">
+				    <div class="swiper-slide"> 
+				    	<div class="bxg-content-slide">
+						    <ul class="bxg-order-list">
+						    	<div v-if="oneLists.length == 0":class="{emptyImg:true}"></div>
+						    	<li v-else v-for="list in oneLists" v-on:click="toggle">
+						    		<div class="order-title bxg-between">
+						    			<div>
+							    			<span>{{list.user}}</span>
+							    			<span>{{list.address}}</span>
+							    		</div>
+							    		<div class="bxg-between">
+							    			<button v-on:click="delivery" v-bind:dataId = "getId(list)">配送</button>
+							    			<i class="order-icon"></i>
+							    		</div>
+						    		</div>
+						    		<div class="goods-list">
+						    			<ul>
+						    				<li class="bxg-clear" v-for="goods in list.goods" v-if="goods.status === 0":class="{refund:true}">
+						    					<span>{{goods.name}}</span>
+						    					<span>×{{goods.num}}</span>
+						    					<span>已申请退货</span>
+						    				</li>
+						    				<li v-else class="bxg-clear">
+						    					<span>{{goods.name}}</span>
+						    					<span>×{{goods.num}}</span>
+						    					<span>￥{{goods.price}}</span>
+						    				</li>
+						    			</ul>
+						    			<div class="bxg-user-info bxg-clear">
+						    				<span>联系方式：{{list.tel}}</span>
+						    				<span>共{{sumNum(list)}}件商品</span>
+						    				<span>总额：￥{{sumPrice(list)}}</span>
+						    			</div>
+						    		</div>
+						    	</li>
+						    </ul>
+						</div>
+					</div>
+					<div class="swiper-slide"> 
+				    	<div class="bxg-content-slide">
+						    <ul class="bxg-order-list">
+						    	<div v-if="twoLists.length == 0":class="{emptyImg:true}"></div>
+						    	<li v-else v-for="list in twoLists" v-on:click="toggle">
+						    		<div class="order-title bxg-between">
+						    			<div>
+							    			<span>{{list.user}}</span>
+							    			<span>{{list.address}}</span>
+							    		</div>
+							    		<div class="bxg-between">
+							    			<button v-on:click="refund" v-bind:dataId = "getId(list)">退货</button>
+							    			<i class="order-icon"></i>
+							    		</div>
+						    		</div>
+						    		<div class="goods-list">
+						    			<ul>
+						    				<li class="bxg-clear refund" v-for="goods in list.goods">
+						    					<span>{{goods.name}}</span>
+						    					<span>×{{goods.num}}</span>
+						    					<span>已申请退货</span>
+						    				</li>
+						    				
+						    			</ul>
+						    			<div class="bxg-user-info bxg-clear">
+						    				<span>联系方式：{{list.tel}}</span>
+						    				<span>共{{sumNum(list)}}件商品</span>
+						    				<span>总额：￥{{sumPrice(list)}}</span>
+						    			</div>
+						    		</div>
+						    	</li>
+						    </ul>
+						</div>
+					</div>
+					<div class="swiper-slide"> 
+				    	<div class="bxg-content-slide">
+						    <ul class="bxg-order-list delivery-ok">
+						    	<div v-if="threeLists.length == 0":class="{emptyImg:true}"></div>
+						    	<li v-else v-for="list in threeLists" v-on:click="toggle">
+						    		<div class="order-title bxg-between">
+						    			<div>
+							    			<span>{{list.user}}</span>
+							    			<span>{{list.address}}</span>
+							    		</div>
+							    		<div class="bxg-between">
+							    			<button>已配送</button>
+							    			<i class="order-icon"></i>
+							    		</div>
+						    		</div>
+						    		<div class="goods-list">
+						    			<ul>
+						    				<li class="bxg-clear" v-for="goods in list.goods">
+						    					<span>{{goods.name}}</span>
+						    					<span>×{{goods.num}}</span>
+						    					<span>￥{{goods.price}}</span>
+						    				</li>
+						    			</ul>
+						    			<div class="bxg-user-info bxg-clear">
+						    				<span>联系方式：{{list.tel}}</span>
+						    				<span>共{{sumNum(list)}}件商品</span>
+						    				<span>总额：￥{{sumPrice(list)}}</span>
+						    			</div>
+						    		</div>
+						    	</li>
+						    </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="public/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="public/js/swiper.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				var order = new Vue({
+					el: '#order-list',
+					data: {
+						oneLists: [],
+						twoLists: [],
+						threeLists: []
+					},
+					created: function() {
+						this.getoneLists();
+					},
+					methods:{
+						getoneLists: function() {
+							var that = this;
+							that.$http({ //调用接口
+								method: 'GET',
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/selectoder/" //this指data
+							}).then(function(res) { //接口返回数据
+								this.oneLists = res.data;
+//								console.log(this.oneLists.list);
+							}, function(error) {
+								
+							})
+						},
+						
+						gettwoLists: function() {
+							var that = this;
+							that.$http({ //调用接口
+								method: 'GET',
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/selectretreat/" //this指data
+							}).then(function(res) { //接口返回数据		
+									this.twoLists = res.data;
+							}, function(error) {
+								
+							})
+						},
+						getthreeLists: function() {
+							var that = this;
+							that.$http({ //调用接口
+								method: 'GET',
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/selectoder/is/1" //this指data
+							}).then(function(res) { //接口返回数据
+								this.threeLists = res.data;
+							}, function(error) {
+								
+							})
+						},
+						sumNum:function(list){
+							var sum = 0;
+							list.goods.forEach(function(goods, index) {
+								if(!(goods.status === 0)){
+									sum += Number(goods.num);
+								}		
+							})
+							return sum;
+						},
+						sumPrice:function(list){
+							var sum = 0;
+							list.goods.forEach(function(goods, index) {
+								if(!(goods.status === 0)){
+									sum += Number(goods.price)*Number(goods.num);
+								}
+							})
+							return sum;
+						},
+						toggle:function(){
+							var li = event.currentTarget;
+							$(li).find(".goods-list").toggle();
+							$(li).find("i").toggleClass("tog");
+							var sibling = $(li).siblings('li').find(".goods-list");
+							sibling.each(function(index,item){
+								if($(this).css("display")=="block"){
+									$(this).toggle();
+									$(this).parents("li").find('i').toggleClass("tog");
+								}
+							});
+						},
+						getId:function(list){
+							var idArr = [];
+							list.goods.forEach(function(goods, index) {
+								idArr.push(goods.id);
+							});
+							return idArr;
+						},
+						delivery:function(){
+							var obj = event.currentTarget;
+							$(obj).parents("li").remove();
+							var id = $(obj).attr("dataId").split(',');
+							var that = this;
+							that.$http({
+								method: 'post',
+								params:{id:JSON.stringify(id)},
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/isoder" 
+							}).then(function(res) { 
+								$(obj).parents("li").remove();
+							}, function(error) {
+								
+							})
+						},
+						refund:function(){
+							var obj = event.target;
+							var id = $(obj).attr("dataId").split(',');
+							$(obj).parents("li").remove();
+						    var that = this;
+							that.$http({
+								method: 'post',
+								params:{id:JSON.stringify(id)},
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/isretreat" 
+							}).then(function(res) { 
+//								if(res.data.status == '1111'){
+//									$(obj).parents("li").remove();
+//								}
+							}, function(error) {
+								
+							})
+						}
+					}
+				});
+				
+				
+				
+				var tabSwiper = new Swiper('.bxg-order', {
+			      	autoHeight: true,
+					speed:500,
+					resistanceRatio : 0,
+					onSlideChangeStart: function(){
+						$(".bxg-tabs a.tabActive").removeClass('tabActive');
+						$(".bxg-tabs a").eq(tabSwiper.activeIndex).addClass('tabActive');
+						if(tabSwiper.activeIndex==1){
+							order.gettwoLists();
+						}else if(tabSwiper.activeIndex==2){
+							order.getthreeLists();
+						}
+					}
+					
+			    });
+			    $(".bxg-tabs a").on('touchstart mousedown',function(e){
+						e.preventDefault();
+						tabSwiper.slideTo($(this).index());
+						if($(this).index()==1){
+							order.gettwoLists();
+						}else if($(this).index()==2){
+							order.getthreeLists();
+						}
+				});
+					
+				$(".bxg-tabs a").click(function(e){
+						e.preventDefault();
+						tabSwiper.slideTo($(this).index());
+						if($(this).index()==1){
+							order.gettwoLists();
+						}else if($(this).index()==2){
+							order.getthreeLists();
+						}
+				});
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,139 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  background: #f0f0f2;
+}
+.bxg-content {
+  position: relative;
+  margin-top: 1.11111111rem;
+}
+.bxg-between {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify ;
+  justify-content: space-between;
+}
+.bxg-tabs {
+  position: fixed;
+  top: 1.11111111rem;
+  width: 100%;
+  height: 1.11111111rem;
+  line-height: 1.11111111rem;
+  text-align: center;
+  background: #fff;
+  z-index: 2;
+}
+.bxg-tabs a {
+  display: block;
+  width: 33.33333333%;
+  color: #888;
+  font-size: 0.47222222rem;
+  border-bottom: 1px solid #f0f0f2;
+}
+.tabActive {
+  color: #12B7F5!important;
+  border-bottom: 1px solid #12B7F5!important;
+}
+.bxg-order {
+  position: relative;
+  margin-top: 2.36111111rem;
+}
+.swiper-wrapper {
+  height: 100%;
+}
+.swiper-slide {
+  min-height: 8.33333333rem;
+}
+.bxg-order-list {
+  font-size: 0.41666667rem;
+}
+.bxg-order-list > li {
+  margin-bottom: 0.06944444rem;
+  padding: 0 0.41666667rem;
+  background: #fff;
+}
+.order-title {
+  height: 1.25rem;
+  color: #555555;
+  line-height: 1.25rem;
+}
+.order-title span {
+  margin-right: 0.13888889rem;
+}
+.order-title button {
+  margin: 0.27777778rem 0.27777778rem;
+  height: 0.69444444rem;
+  width: 1.80555556rem;
+  font-size: 0.38888889rem;
+  color: #fff;
+  background: #12B7F5;
+  border: none;
+  border-radius: 0.13888889rem;
+}
+.delivery-ok button {
+  color: #888;
+  background: none;
+  border: none;
+}
+.order-icon {
+  background: url(../images/order_icon.png) no-repeat;
+  background-size: 0.44444444rem 0.54166667rem;
+}
+.order-title i {
+  margin-top: 0.5rem;
+  width: 0.44444444rem;
+  height: 0.25rem;
+  background-position: 0 -0.27777778rem;
+}
+.order-title i.tog {
+  background-position: 0 0;
+}
+.goods-list {
+  display: none;
+  padding: 0.13888889rem 0;
+  border-top: 1px solid #f0f0f2;
+}
+.goods-list ul li {
+  height: 0.69444444rem;
+  line-height: 0.69444444rem;
+  font-size: 0.36111111rem;
+}
+.goods-list ul li.refund {
+  color: #b4b4b4;
+}
+.goods-list ul li span,
+.bxg-user-info span {
+  float: left;
+  text-align: center;
+  width: 2.15277778rem;
+  display: block;
+}
+.goods-list ul li span:first-child,
+.bxg-user-info span:first-child {
+  width: 4.86111111rem;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.bxg-user-info {
+  margin: 0.13888889rem 0 0.27777778rem;
+  padding-top: 0.34722222rem;
+  border-top: 1px solid #F0F0F2;
+  font-size: 0.36111111rem;
+}
+.emptyImg {
+  margin-top: 2.77777778rem;
+  width: 100%;
+  height: 2.38888889rem;
+  background: url(../images/order_empty.png) no-repeat center center;
+  background-size: 2.25rem 2.38888889rem;
+}
