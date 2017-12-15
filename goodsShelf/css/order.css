@@ -105,7 +105,7 @@ body {
   font-size: 0.36111111rem;
 }
 .goods-list ul li.refund {
-  color: #b4b4b4;
+  color: #d4d4d4;
 }
 .goods-list ul li span,
 .bxg-user-info span {
@@ -125,10 +125,20 @@ body {
   -webkit-line-clamp: 1;
 }
 .bxg-user-info {
-  margin: 0.13888889rem 0 0.27777778rem;
-  padding-top: 0.34722222rem;
-  border-top: 1px solid #F0F0F2;
+  margin: 0.13888889rem 0 0;
+  padding: 0.34722222rem 0;
   font-size: 0.36111111rem;
+}
+.goods-list button {
+  margin: 0.13888889rem 0.27777778rem;
+  float: right;
+  height: 0.69444444rem;
+  width: 2.08333333rem;
+  font-size: 0.38888889rem;
+  color: #fff;
+  background: #12B7F5;
+  border: none;
+  border-radius: 0.13888889rem;
 }
 .emptyImg {
   margin-top: 2.77777778rem;

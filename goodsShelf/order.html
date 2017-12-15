@@ -38,7 +38,7 @@
 							    			<span>{{list.address}}</span>
 							    		</div>
 							    		<div class="bxg-between">
-							    			<button v-on:click="delivery" v-bind:dataId = "getId(list)">配送</button>
+							    			
 							    			<i class="order-icon"></i>
 							    		</div>
 						    		</div>
@@ -60,6 +60,10 @@
 						    				<span>共{{sumNum(list)}}件商品</span>
 						    				<span>总额：￥{{sumPrice(list)}}</span>
 						    			</div>
+						    			<div class="bxg-clear">
+						    				<button v-on:click="delivery" v-bind:dataId = "getId(list)">配送</button>	
+						    			</div>
+
 						    		</div>
 						    	</li>
 						    </ul>
@@ -76,7 +80,7 @@
 							    			<span>{{list.address}}</span>
 							    		</div>
 							    		<div class="bxg-between">
-							    			<button v-on:click="refund" v-bind:dataId = "getId(list)">退货</button>
+
 							    			<i class="order-icon"></i>
 							    		</div>
 						    		</div>
@@ -93,6 +97,9 @@
 						    				<span>联系方式：{{list.tel}}</span>
 						    				<span>共{{sumNum(list)}}件商品</span>
 						    				<span>总额：￥{{sumPrice(list)}}</span>
+						    			</div>
+						    			<div class="bxg-clear">
+							    			<button v-on:click="refund" v-bind:dataId = "getId(list)">退货</button>
 						    			</div>
 						    		</div>
 						    	</li>
@@ -116,7 +123,12 @@
 						    		</div>
 						    		<div class="goods-list">
 						    			<ul>
-						    				<li class="bxg-clear" v-for="goods in list.goods">
+						    				<li class="bxg-clear" v-for="goods in list.goods" v-if="goods.status === 0":class="{refund:true}">
+						    					<span>{{goods.name}}</span>
+						    					<span>×{{goods.num}}</span>
+						    					<span>已申请退货</span>
+						    				</li>
+						    				<li v-else class="bxg-clear">
 						    					<span>{{goods.name}}</span>
 						    					<span>×{{goods.num}}</span>
 						    					<span>￥{{goods.price}}</span>
@@ -154,7 +166,7 @@
 							var that = this;
 							that.$http({ //调用接口
 								method: 'GET',
-								url: "http://m.bxgogo.com/Supermarket/Ingoods/selectoder/" //this指data
+								url: "json/onelists.json" //this指data
 							}).then(function(res) { //接口返回数据
 								this.oneLists = res.data;
 //								console.log(this.oneLists.list);
@@ -167,7 +179,7 @@
 							var that = this;
 							that.$http({ //调用接口
 								method: 'GET',
-								url: "http://m.bxgogo.com/Supermarket/Ingoods/selectretreat/" //this指data
+								url: "json/twolists.json" //this指data
 							}).then(function(res) { //接口返回数据		
 									this.twoLists = res.data;
 							}, function(error) {
