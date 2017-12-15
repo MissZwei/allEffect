@@ -390,10 +390,51 @@ img {
 }
 .bxg-bargin-goods > div:first-child {
   width: 9.38888889rem;
+  margin-bottom: 0.05555556rem;
 }
 .bxg-bargin-goods > div:first-child .bxg-goods-pic {
-  width: 4.69444444rem;
-  height: 4.69444444rem;
+  float: left;
+  width: 4.34722222rem;
+  height: 4.34722222rem;
+}
+.bxg-bargin-goods > div:first-child a > div:last-child {
+  float: left;
+  width: 5.04166667rem;
+  height: 4.34722222rem;
+  background: url(../../img/newyear/goods_bg.png) no-repeat !important;
+  background-size: 100% 100%!important;
+}
+.bxg-bargin-goods > div:first-child .bxg-goods-intro {
+  margin: 0.13888889rem 0 0 0.13888889rem;
+  width: 4.90277778rem;
+  line-height: 0.55555556rem;
+  font-size: 0.38888889rem;
+}
+.bxg-bargin-goods > div:first-child .bxg-goods-price {
+  margin-top: 1rem!important;
+  width: 100%;
+  height: 0.93055556rem;
+  line-height: 0.93055556rem;
+  font-size: 0.41666667rem;
+  color: #fff;
+  background: url(../../img/newyear/buy_btn.png) no-repeat;
+  background-size: 4.72222222rem 0.93055556rem;
+}
+.bxg-bargin-goods > div .bxg-goods-price small {
+  margin-left: 0.16666667rem;
+  padding: 0.06944444rem 0.08333333rem;
+  font-size: 0.27777778rem;
+  color: #ebd39c;
+  background: #6c0807;
+  border-radius: 0.06944444rem;
+}
+.bxg-bargin-goods > div:first-child .bxg-goods-price small {
+  margin-left: 0.55555556rem;
+  padding: 0.06944444rem 0.13888889rem;
+  font-size: 0.33333333rem;
+  color: #6c0807;
+  background: #ebd39c;
+  border-radius: 0.13888889rem;
 }
 .bxg-new-goods > div {
   margin-bottom: 0.05555556rem;
@@ -410,6 +451,36 @@ img {
 }
 .bxg-goods-list {
   position: relative;
+}
+.goods-foot span {
+  float: left;
+}
+.goods-foot span.bxg-buy {
+  float: right;
+  margin-top: 0.25rem;
+  width: 1.38888889rem;
+  height: 0.41666667rem;
+  line-height: 0.41666667rem;
+  font-size: 0.27777778rem;
+  text-align: center;
+  color: #ebd39c;
+  background: #a20204;
+}
+.goods-foot i {
+  margin-top: 0.30555556rem;
+  float: right;
+  width: 0.36111111rem;
+  height: 0.26388889rem;
+  display: block;
+  background-position: -1rem 0;
+}
+.buy-after {
+  margin-right: 0.20833333rem;
+  transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
 }
 .bxg-recommend > div:first-child {
   background-position: 0 -3.33333333rem;
