@@ -4,6 +4,7 @@ html{
 body{
     min-height:100%;
     background: #f0f0f2;
+    overflow: hidden;
 }
 .bxg-content {
   position: relative;
@@ -58,14 +59,20 @@ body{
     margin-bottom:5/72rem;
     padding:0 30/72rem;
     background: #fff;
+    
 }
 .order-title{
     height:90/72rem;
     color: #555555;
     line-height: 90/72rem;
+    overflow: hidden;
 }
 .order-title span{
+    float: left;
+    display: block;
     margin-right:10/72rem;
+    width:150/72rem;
+    overflow:hidden;
 }
 .order-title button{
     margin:20/72rem 20/72rem;
@@ -147,4 +154,51 @@ body{
     height:172/72rem;
     background: url(../images/order_empty.png)no-repeat center center;
     background-size: 162/72rem 172/72rem;
+}
+.sales-return{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index:2;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.return-tip{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top:-548/72/2rem;
+    margin-left:-555/72/2rem;
+    width:555/72rem;
+    height:548/72rem;
+    background: #fff;
+    border-radius: 10/72rem;
+    overflow: hidden;
+}
+.return-tip>div:first-child{
+    margin-bottom:275/72rem;
+    padding-top:138/72rem;
+    height: 216/72rem;
+    font-size: 36/72rem;
+    color: #12B7F5;
+    text-align: center;
+}
+.return-tip>div:first-child p:first-child{
+    margin-bottom:70/72rem;
+}
+.return-tip>div:last-child >div{
+    width:50%;
+    height:60/72rem;
+    line-height: 60/72rem;
+    font-size: 32/72rem;
+    text-align: center;
+    color: #fff;
+    background: #12B7F5;
+} 
+.return-tip>div:last-child >div:first-child{
+    border-right:1px solid #fff;
+    box-sizing: border-box;
 }

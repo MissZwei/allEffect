@@ -10,7 +10,8 @@
 		<link rel="stylesheet" href="css/order.css" />
 		<script type="text/javascript" src="public/js/public.js" ></script>
 		<script type="text/javascript" src="public/js/vue.min.js" ></script>
-		<script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js" type="text/javascript" charset="utf-8"></script>    
+
+		<script src="http://cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js" type="text/javascript" charset="utf-8"></script>    
 	</head>
 	<body>
 		<!--头部-->
@@ -26,12 +27,27 @@
 		        <a href="#" hidefocus="true">已配送</a>  
 			</div>
 			<div class="bxg-order" id="order-list">
+				<!--点击配送若有退货商品显示是否同意退货-->
+									<div class="sales-return">
+										<div class="return-tip">
+											<div>
+												<p>您的订单里面包含申请退货状态</p>
+												<p>是否同意退货？</p>
+											</div>
+											<div class="bxg-between">
+												<div class="return-cancel" v-on:click="returnCancel">否</div>
+												<div class="return-ok" v-on:click="returnOk">是</div>
+											</div>
+										</div>
+									</div>
+									<!-- end -->
+
 				<div class="swiper-wrapper">
 				    <div class="swiper-slide"> 
 				    	<div class="bxg-content-slide">
-						    <ul class="bxg-order-list">
+						    <ul class="bxg-order-list">	
 						    	<div v-if="oneLists.length == 0":class="{emptyImg:true}"></div>
-						    	<li v-else v-for="list in oneLists" v-on:click="toggle">
+						    	<li v-else v-for="(list,index) in oneLists" v-bind:id="index" v-on:click="toggle">
 						    		<div class="order-title bxg-between">
 						    			<div>
 							    			<span>{{list.user}}</span>
@@ -61,10 +77,11 @@
 						    				<span>总额：￥{{sumPrice(list)}}</span>
 						    			</div>
 						    			<div class="bxg-clear">
-						    				<button v-on:click="delivery" v-bind:dataId = "getId(list)">配送</button>	
+						    				<button v-on:click="delivery(list)" v-bind:dataId = "getId(list)">确定配送</button>
 						    			</div>
-
 						    		</div>
+
+									
 						    	</li>
 						    </ul>
 						</div>
@@ -80,7 +97,7 @@
 							    			<span>{{list.address}}</span>
 							    		</div>
 							    		<div class="bxg-between">
-
+							    			
 							    			<i class="order-icon"></i>
 							    		</div>
 						    		</div>
@@ -99,7 +116,8 @@
 						    				<span>总额：￥{{sumPrice(list)}}</span>
 						    			</div>
 						    			<div class="bxg-clear">
-							    			<button v-on:click="refund" v-bind:dataId = "getId(list)">退货</button>
+							    			<button v-on:click="refund" v-bind:dataId = "getId(list)">确认退货</button>
+											<button v-on:click="refundqx" v-bind:dataId = "getId(list)">驳回退货</button>
 						    			</div>
 						    		</div>
 						    	</li>
@@ -127,6 +145,7 @@
 						    					<span>{{goods.name}}</span>
 						    					<span>×{{goods.num}}</span>
 						    					<span>已申请退货</span>
+												<span style="display: none;">￥{{goods.price}}</span>
 						    				</li>
 						    				<li v-else class="bxg-clear">
 						    					<span>{{goods.name}}</span>
@@ -169,7 +188,6 @@
 								url: "json/onelists.json" //this指data
 							}).then(function(res) { //接口返回数据
 								this.oneLists = res.data;
-//								console.log(this.oneLists.list);
 							}, function(error) {
 								
 							})
@@ -179,7 +197,7 @@
 							var that = this;
 							that.$http({ //调用接口
 								method: 'GET',
-								url: "json/twolists.json" //this指data
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/selectretreat/" //this指data
 							}).then(function(res) { //接口返回数据		
 									this.twoLists = res.data;
 							}, function(error) {
@@ -200,18 +218,14 @@
 						sumNum:function(list){
 							var sum = 0;
 							list.goods.forEach(function(goods, index) {
-								if(!(goods.status === 0)){
-									sum += Number(goods.num);
-								}		
+								sum += Number(goods.num);	
 							})
 							return sum;
 						},
 						sumPrice:function(list){
 							var sum = 0;
 							list.goods.forEach(function(goods, index) {
-								if(!(goods.status === 0)){
-									sum += Number(goods.price)*Number(goods.num);
-								}
+								sum += Number(goods.price)*Number(goods.num);
 							})
 							return sum;
 						},
@@ -234,38 +248,105 @@
 							});
 							return idArr;
 						},
-						delivery:function(){
+						delivery:function(list){
 							var obj = event.currentTarget;
-							$(obj).parents("li").remove();
-							var id = $(obj).attr("dataId").split(',');
+
+							var allId = $(obj).attr("dataId").split(',');
 							var that = this;
 							that.$http({
 								method: 'post',
-								params:{id:JSON.stringify(id)},
-								url: "http://m.bxgogo.com/Supermarket/Ingoods/isoder" 
+								params:{id:JSON.stringify(allId)},
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/isreturn" 
 							}).then(function(res) { 
-								$(obj).parents("li").remove();
+								console.log(res);
+								var flag = eval(res.data);
+								// 1111        待退货的id
+								console.log(flag.msg);
+								if(flag.msg){
+									$(".sales-return").show();
+									$(".return-ok").attr("returnid",flag.msg);
+									$(".return-cancel").attr("returnid",flag.msg);
+								}else{
+									$(obj).parents("li").remove();
+								}
+							}, function(error) {
+									
+							})
+						},
+						returnOk:function(){
+							var obj = event.currentTarget;
+							var returnid = $(obj).attr("returnid").split(',');
+//							var sendid = $(obj).attr("sendid").split(',');
+							var that = this;
+							var remove = '#'+$(obj).attr("liobj");
+							
+							that.$http({
+								method: 'post',
+								params:{id:JSON.stringify(returnid)},
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/isretreat" 
+							}).then(function(res) { 
+								$(".sales-return").fadeOut();
+								$(remove).remove();
 							}, function(error) {
 								
 							})
 						},
+						returnCancel:function(){
+							var obj = event.currentTarget;
+							var returnid = $(obj).attr("returnid").split(',');
+//							var noreturnid = $(obj).attr("noreturnid").split(',');
+							var remove = '#'+$(obj).attr("liobj");
+//							console.log(remove);
+							var that = this;
+							that.$http({
+								method: 'post',
+								params:{id:JSON.stringify(returnid)},
+								url: "http://m.bxgogo.com/Supermarket/Ingoods/qx" 
+							}).then(function(res) { 
+								$(".sales-return").fadeOut();
+								$(remove).remove();
+
+							}, function(error) {
+								
+							})
+							
+						},
 						refund:function(){
 							var obj = event.target;
 							var id = $(obj).attr("dataId").split(',');
-							$(obj).parents("li").remove();
 						    var that = this;
 							that.$http({
 								method: 'post',
 								params:{id:JSON.stringify(id)},
 								url: "http://m.bxgogo.com/Supermarket/Ingoods/isretreat" 
 							}).then(function(res) { 
-//								if(res.data.status == '1111'){
-//									$(obj).parents("li").remove();
-//								}
+								var data = eval(res.data);
+								if(data.status == '1111'){
+									$(obj).parents("li").remove();
+								}
 							}, function(error) {
 								
 							})
-						}
+						},
+                        refundqx:function(){
+                            var obj = event.target;
+                            var id = $(obj).attr("dataId").split(',');
+                            var that = this;
+                            that.$http({
+                                method: 'post',
+                                params:{id:JSON.stringify(id)},
+                                url: "http://m.bxgogo.com/Supermarket/Ingoods/qx"
+                            }).then(function(res) {
+                                var data = eval(res.data);
+                                console.log(data);
+                                if(data.status == '1111'){
+                                    $(obj).parents("li").remove();
+                                }
+                            }, function(error) {
+
+                            })
+                        }
+
 					}
 				});
 				
@@ -309,3 +390,5 @@
 		</script>
 	</body>
 </html>
+
+
